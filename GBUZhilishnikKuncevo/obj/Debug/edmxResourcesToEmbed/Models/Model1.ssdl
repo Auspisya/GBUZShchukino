@@ -94,11 +94,11 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="passportNumber" Type="nvarchar" MaxLength="6" Nullable="false" />
-    <Property Name="passportSeries" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="passportNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="passportSeries" Type="nvarchar" MaxLength="4" />
     <Property Name="passportIssuedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="dateOfIssue" Type="date" Nullable="false" />
-    <Property Name="divisionCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="divisionCode" Type="nvarchar" MaxLength="7" />
     <Property Name="placeOfBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="PaymentState">

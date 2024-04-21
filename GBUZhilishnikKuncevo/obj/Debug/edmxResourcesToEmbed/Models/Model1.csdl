@@ -118,11 +118,11 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="passportNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="passportSeries" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="passportNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="passportSeries" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
     <Property Name="passportIssuedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="dateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="divisionCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="divisionCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
     <Property Name="placeOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Passport" FromRole="Passport" ToRole="PersonalInfo" />
   </EntityType>

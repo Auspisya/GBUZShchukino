@@ -32,6 +32,8 @@ namespace GBUZhilishnikKuncevo.Pages
             CmbGender.DisplayMemberPath = "genderName";
             CmbGender.SelectedValuePath = "id";
             CmbGender.ItemsSource = DBConnection.DBConnect.Gender.ToList();
+            ForeignPassportGrid.Visibility = Visibility.Collapsed;
+            CBShowPassport.IsChecked = true;
         }
 
         /// <summary>
@@ -51,11 +53,11 @@ namespace GBUZhilishnikKuncevo.Pages
         /// <param name="e"></param>
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbDivisionCode.Text == "" || TxbName.Text == "" || TxbPassportIssuedBy.Text == "" ||
-                TxbPassportNumber.Text == "" || TxbPassportSeries.Text == "" ||
-                TxbPhoneNumber.Text == "" || TxbPlaceOfBirth.Text == "" || TxbSNILS.Text == "" || TxbSurname.Text == "" ||
+            if ( ( TxbDivisionCode.Text == "" && CBShowPassport.IsChecked.Value) || TxbName.Text == "" || (TxbPassportIssuedBy.Text == "" && TxbPassportIssuedByF.Text == "") ||
+                ( TxbPassportNumber.Text == "" && TxbPassportNumberF.Text == "") || (TxbPassportSeries.Text == ""  && CBShowPassport.IsChecked.Value) ||
+                TxbPhoneNumber.Text == "" || (TxbPlaceOfBirth.Text == "" && TxbPlaceOfBirthF.Text == "") || TxbSNILS.Text == "" || TxbSurname.Text == "" ||
                 TxbTIN.Text == "" || TxbWhoRegisteredTIN.Text == "" || CmbGender.Text == "" || DPDateOfBirth.Text == "" ||
-                DPDateOfIssue.Text == "" || DPSNILSRegistationDate.Text == "" || DPTINRegistrationDate.Text == "")
+                (DPDateOfIssue.Text == "" && DPDateOfIssueF.Text == "") || DPSNILSRegistationDate.Text == "" || DPTINRegistrationDate.Text == "")
             {
                 MessageBox.Show("Нужно заполнить все поля!",
                     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -70,29 +72,46 @@ namespace GBUZhilishnikKuncevo.Pages
                 {
                     try
                     {
-                        Passport passport = new Passport()
+                        Passport passport = new Passport();
+                       if (CBShowPassport.IsChecked.Value)
                         {
-                            passportNumber = TxbPassportNumber.Text,
-                            passportSeries = TxbPassportSeries.Text,
-                            passportIssuedBy = TxbPassportIssuedBy.Text,
-                            placeOfBirth = TxbPlaceOfBirth.Text,
-                            dateOfIssue = DateTime.Parse(DPDateOfIssue.Text),
-                            divisionCode = TxbDivisionCode.Text
-                        };
-
+                            passport = new Passport()
+                            {
+                                passportNumber = TxbPassportNumber.Text,
+                                passportSeries = TxbPassportSeries.Text,
+                                passportIssuedBy = TxbPassportIssuedBy.Text,
+                                placeOfBirth = TxbPlaceOfBirth.Text,
+                                dateOfIssue = DateTime.Parse(DPDateOfIssue.Text),
+                                divisionCode = TxbDivisionCode.Text
+                            };
+                        }
+                        else
+                        {
+                            passport = new Passport()
+                            {
+                                passportNumber = TxbPassportNumberF.Text,
+                                passportSeries = "",
+                                passportIssuedBy = TxbPassportIssuedByF.Text,
+                                placeOfBirth = TxbPlaceOfBirthF.Text,
+                                dateOfIssue = DateTime.Parse(DPDateOfIssueF.Text),
+                                divisionCode = ""
+                            };
+                        }
+                        DBConnection.DBConnect.Passport.Add(passport);
                         SNILS snils = new SNILS()
                         {
                             snilsNumber = TxbSNILS.Text,
                             registrationDate = DateTime.Parse(DPSNILSRegistationDate.Text)
                         };
-
+                        DBConnection.DBConnect.SNILS.Add(snils);
                         TIN tin = new TIN()
                         {
                             tinNumber = TxbTIN.Text,
                             whoRegistered = TxbWhoRegisteredTIN.Text,
                             registrationDate = DateTime.Parse(DPTINRegistrationDate.Text)
                         };
-
+                        DBConnection.DBConnect.TIN.Add(tin);
+                        DBConnection.DBConnect.SaveChanges();
                         PersonalInfo info = new PersonalInfo()
                         {
                             Gender = CmbGender.SelectedItem as Gender,
@@ -103,7 +122,8 @@ namespace GBUZhilishnikKuncevo.Pages
                             dateOfBirth = DateTime.Parse(DPDateOfBirth.Text),
                             passportId = passport.id
                         };
-
+                        DBConnection.DBConnect.PersonalInfo.Add(info);
+                        DBConnection.DBConnect.SaveChanges();
                         Client client = new Client()
                         {
                             snilsId = snils.id,
@@ -111,12 +131,8 @@ namespace GBUZhilishnikKuncevo.Pages
                             personalInfo = info.id
                         };
                         DBConnection.DBConnect.Client.Add(client);
-                        DBConnection.DBConnect.Passport.Add(passport);
-                        DBConnection.DBConnect.TIN.Add(tin);
-                        DBConnection.DBConnect.SNILS.Add(snils);
                         DBConnection.DBConnect.SaveChanges();
-                        MessageBox.Show("Данные успешно добавлены!",
-                            "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                         Navigation.frameNav.GoBack();
 
                     }
@@ -172,6 +188,38 @@ namespace GBUZhilishnikKuncevo.Pages
             if (Regex.IsMatch(e.Text, pattern))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void CBShowForeignPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBShowForeignPassport.IsChecked.Value)
+            {
+                ForeignPassportGrid.Visibility = Visibility.Visible;
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowPassport.IsChecked = false;
+            }
+            else
+            {
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                PassportGrid.Visibility = Visibility.Visible;
+                CBShowPassport.IsChecked = true;
+            }
+            
+        }
+        private void CBShowPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBShowPassport.IsChecked.Value)
+            {
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                PassportGrid.Visibility = Visibility.Visible;
+                CBShowForeignPassport.IsChecked = false;
+            }
+            else
+            {
+                ForeignPassportGrid.Visibility = Visibility.Visible;
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowForeignPassport.IsChecked = true;
             }
         }
     }

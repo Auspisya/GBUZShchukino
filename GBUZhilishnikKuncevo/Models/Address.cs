@@ -29,6 +29,7 @@ namespace GBUZhilishnikKuncevo.Models
         public int entranceNumber { get; set; }
         public int floorNumber { get; set; }
         public int apartmentNumber { get; set; }
+
         public string fullAddress => $"г.{city} р.{area} ул.{street} д.{buildingNumber}/{buildingCorpse} под.{entranceNumber} э.{floorNumber} кв.{apartmentNumber}";
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

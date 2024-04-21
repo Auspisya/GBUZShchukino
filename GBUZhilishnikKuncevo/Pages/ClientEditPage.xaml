@@ -207,6 +207,7 @@
                                  HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
+                                 ToolTip="Образец: 000-000"
                                  Text="Name"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="TxbNum_PreviewTextInput"

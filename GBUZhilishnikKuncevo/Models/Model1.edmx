@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище menshakova_publicUtilitiesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище menshakova_publicUtilitiesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accounting">
           <Key>
             <PropertyRef Name="id" />
@@ -99,11 +99,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="passportNumber" Type="nvarchar" MaxLength="6" Nullable="false" />
-          <Property Name="passportSeries" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="passportNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="passportSeries" Type="nvarchar" MaxLength="4" />
           <Property Name="passportIssuedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="dateOfIssue" Type="date" Nullable="false" />
-          <Property Name="divisionCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="divisionCode" Type="nvarchar" MaxLength="7" />
           <Property Name="placeOfBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PaymentState">
@@ -657,8 +657,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="menshakova_publicUtilitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -780,11 +779,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="passportNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="passportSeries" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passportNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passportSeries" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="passportIssuedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="divisionCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="divisionCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="placeOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Passport" FromRole="Passport" ToRole="PersonalInfo" />
         </EntityType>
