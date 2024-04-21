@@ -9,46 +9,50 @@
       Title="Профиль">
 
     <Grid Background="White">
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Left"
-                                Width="640">
-                        <Image Source="./Resources/user.png"
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Stretch">
+                <Grid Background="White" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="220"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="./Resources/user.png"
+                               Grid.Row ="0" Grid.Column="0"
                                Height="60"
                                Width="60"
+                               HorizontalAlignment="Left"
                                Margin="5"/>
-                        <TextBlock Text="ФИО"
+                    <TextBlock Text="ФИО"
+                                   Grid.Row ="0" Grid.Column="0"
                                    Name="TxbUserFullName"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    FontSize="25"
-                                   Margin="5, 16, 0, 0"
+                                   Margin="80, 25, 0, 0"
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
                                    Foreground="#063B79"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
+                    <Button Name="BtnLogOut"
+                                Grid.Row ="0" Grid.Column="1"
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Right">
-                        <Button Name="BtnLogOut"
                                 HorizontalAlignment="Right"
                                 Click="BtnLogOut_Click"
                                 Content="Выйти"
                                 Foreground="#0850A4"
                                 Style="{StaticResource MaterialDesignFlatButton}"
-                                Margin="5, 5, 5, 53"/>
-                        <Button Name="BtnChangePassword"
+                                Margin="0, 0, 0, 0"/>
+                    <Button Name="BtnChangePassword"
+                                Grid.Row ="0" Grid.Column="1"
                                 Click="BtnChangePassword_Click"
                                 Content="Сменить пароль"
                                 Foreground="#0850A4"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Right"
-                                Margin="0, 5, 5, 5"/>
-                    </StackPanel>
-                </StackPanel>
+                                Margin="0, 0, 80, 0"/>
+                </Grid>
                 <TextBlock Text="Роль:"
                            Name="TxbUserRole"
                            Width="400"

@@ -9,103 +9,135 @@
       Title="Редактирование показания">
 
     <Grid Background="White">
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Stretch">
             <Button Name="BtnBack"
-                    Click="BtnBack_Click"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Content="Назад"
-                    Foreground="#0850A4"
-                    FontSize="20"
-                    Margin="5, 5, 5, 5"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom" Cursor="Hand"/>
-            <StackPanel Orientation="Horizontal">
+                        Click="BtnBack_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Content="Назад"
+                        Foreground="#0850A4"
+                        FontSize="20"
+                        Margin="5, 5, 5, 5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Cursor="Hand"/>
+            <Grid Background="White" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                          Header="Услуга:"
-                          FontSize="20"
-                          Margin="5">
+                          Grid.Row ="0" Grid.Column="0"
+                              Header="Услуга:"
+                              FontSize="20"
+                              Margin="5">
                     <ComboBox Name="CmbService"
-                              Width="250"
-                              IsTextSearchEnabled="True"
-                              IsEditable="True"
-                              SelectionChanged="CmbService_SelectionChanged"/>
+                                  HorizontalAlignment="Stretch"
+                                  SelectionChanged="CmbService_SelectionChanged"
+                                  IsTextSearchEnabled="True"
+                                  IsEditable="True"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                          Header="Показание:"
-                          FontSize="20"
-                          Margin="5">
+                          Grid.Row ="0" Grid.Column="1"
+                              Header="Показание:"
+                              FontSize="20"
+                              Margin="5">
                     <TextBox Name="TxbCounterReading"
-                             Style="{StaticResource MaterialDesignTextBox}"
-                             Width="250"
-                             CaretBrush="#FF0850A4"
-                             SelectionBrush="#FF0850A4"
-                             VerticalAlignment="Top"
-                             PreviewTextInput="TxbNum_PreviewTextInput"/>
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 HorizontalAlignment="Stretch"
+                                 CaretBrush="#FF0850A4"
+                                 SelectionBrush="#FF0850A4"
+                                 VerticalAlignment="Top"
+                                 PreviewTextInput="TxbNum_PreviewTextInput"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row ="0" Grid.Column="2"
                           Header="Ед. измерения:"
                           FontSize="20"
                           Margin="5">
                     <TextBox Name="TxbUnit"
                              Style="{StaticResource MaterialDesignTextBox}"
-                             Width="250"
+                             HorizontalAlignment="Stretch"
                              CaretBrush="#FF0850A4"
                              SelectionBrush="#FF0850A4"
                              VerticalAlignment="Top"
                              IsReadOnly="True"/>
                 </GroupBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Grid>
+            <Grid Background="White" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                          Header="Дата начала ведения учёта:"
-                          FontSize="20"
-                          Margin="5">
+                          Grid.Row ="0" Grid.Column="0"
+                              Header="Дата начала ведения учёта:"
+                              FontSize="20"
+                              Margin="5">
                     <DatePicker Name="DPDateOfStart"
-                                Width="252"
-                                BorderBrush="#FF0850A4"/>
+                                    HorizontalAlignment="Stretch"
+                                    BorderBrush="#FF0850A4"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row ="0" Grid.Column="1"
                           Header="Дата окончания ведения учёта:"
                           FontSize="20"
                           Margin="5">
                     <DatePicker Name="DPDateOfEnd"
-                                Width="290"
+                                HorizontalAlignment="Stretch"
                                 BorderBrush="#FF0850A4"/>
                 </GroupBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Grid>
+            <Grid Background="White" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row ="0" Grid.Column="0"
                           Header="Лицевой счёт плательщика:"
                           FontSize="20"
                           Margin="5">
                     <ComboBox Name="CmbBankBook"
-                              Width="250"
+                              HorizontalAlignment="Stretch"
                               IsTextSearchEnabled="True"
                               IsEditable="True" SelectionChanged="CmbBankBook_SelectionChanged"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row ="0" Grid.Column="1"
                           Header="Номер счётчика:"
                           FontSize="20"
                           Margin="5">
                     <ComboBox Name="CmbCounterNumber"
-                              Width="250"
+                              HorizontalAlignment="Stretch"
                               IsTextSearchEnabled="True"
                               IsEditable="True"
                               SelectionChanged="CmbCounterNumber_SelectionChanged"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row ="0" Grid.Column="2"
                           Header="Тип счётчика:"
                           FontSize="20"
                           Margin="5">
                     <TextBox Name="TxbCounterType"
                              Style="{StaticResource MaterialDesignTextBox}"
-                             Width="250"
+                             HorizontalAlignment="Stretch"
                              CaretBrush="#FF0850A4"
                              SelectionBrush="#FF0850A4"
                              VerticalAlignment="Top"
                              IsReadOnly="True"/>
                 </GroupBox>
-            </StackPanel>
+            </Grid>
             <Button Name="BtnEdit"
                     Click="BtnEdit_Click"
                     Content="Внести изменения"
