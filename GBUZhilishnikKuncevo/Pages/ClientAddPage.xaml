@@ -7,10 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="800"
       Title="Добавление квартиросъёмщика">
-
     <Grid Background="White">
         <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <StackPanel HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Button Name="BtnBack"
                         Click="BtnBack_Click"
                         Style="{StaticResource MaterialDesignFlatButton}"
@@ -21,57 +20,77 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"/>
                 <TextBlock Text="Личные данные:"
-                           FontSize="20"   
+                           FontSize="20"
                            Margin="5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Фамилия:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbSurname"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="Txb_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Имя:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbName"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="Txb_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Отчество:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbPatronymic"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="Txb_PreviewTextInput"/>
                     </GroupBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                </Grid>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Header="Номер телефона:"
+                              Grid.Row ="0" Grid.Column="0"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbPhoneNumber"
                                  ToolTip="Образец: +79000000000"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -79,35 +98,46 @@
                                  MaxLength="12"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Пол:"
                               FontSize="20"
                               Margin="5">
                         <ComboBox Name="CmbGender"
-                                  Width="250"/>
+                                  HorizontalAlignment="Stretch"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Дата рождения:"
                               FontSize="20"
                               Margin="5">
                         <DatePicker Name="DPDateOfBirth"
-                                    Width="250"
+                                    HorizontalAlignment="Stretch"
                                     BorderBrush="#FF0850A4"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <TextBlock Text="Паспортные данные:"
                            FontSize="20"
                            Margin="5, 17, 5, 5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Серия паспорта:"
                               FontSize="20"
                               Margin="5, 5, 5, 17">
                         <TextBox Name="TxbPassportSeries"
                                  ToolTip="Сплошные 4 цифры"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -115,13 +145,14 @@
                                  MaxLength="4"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Номер паспорта:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbPassportNumber"
                                  ToolTip="Сплошные 6 цифр"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -129,34 +160,44 @@
                                  MaxLength="6"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Паспорт выдан:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbPassportIssuedBy"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                </Grid>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Дата выдачи паспорта:"
                               FontSize="20"
                               Margin="5">
                         <DatePicker Name="DPDateOfIssue"
-                                    Width="250"
+                                    HorizontalAlignment="Stretch"
                                     BorderBrush="#FF0850A4"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Код подразделения:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbDivisionCode"
-                                 ToolTip="Образец: 000-000"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -164,32 +205,42 @@
                                  MaxLength="7"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Место рождения:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbPlaceOfBirth"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  KeyDown="Txb_KeyDown"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <TextBlock Text="Данные ИНН:"
                            FontSize="20"
                            Margin="5, 17, 5, 5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="ИНН:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbTIN"
                                  ToolTip="Сплошные 10 цифр"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -197,39 +248,49 @@
                                  MaxLength="10"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Дата регистрации ИНН:"
                               FontSize="20"
                               Margin="5">
                         <DatePicker Name="DPTINRegistrationDate"
-                                    Width="250"
+                                    HorizontalAlignment="Stretch"
                                     BorderBrush="#FF0850A4"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="ИНН Зарегистрирован:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbWhoRegisteredTIN"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <TextBlock Text="Данные СНИЛС:"
                            FontSize="20"
                            Margin="5, 17, 5, 5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="СНИЛС:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbSNILS"
                                  ToolTip="Образец: 000-000-000 00"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -237,13 +298,17 @@
                                  MaxLength="14"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Дата регистрации СНИЛС:"
                               FontSize="20"
                               Margin="5">
                         <DatePicker Name="DPSNILSRegistationDate"
-                                    Width="250"
+                                    HorizontalAlignment="Stretch"
                                     BorderBrush="#FF0850A4"/>
                     </GroupBox>
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+
                 </StackPanel>
                 <Button Name="BtnAdd"
                         Click="BtnAdd_Click"
@@ -252,6 +317,7 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Center"
                         FontSize="20"
+                        Margin="0, 15, 0, 0"
                         Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
             </StackPanel>
         </ScrollViewer>

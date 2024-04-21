@@ -10,7 +10,7 @@
 
     <Grid Background="White">
         <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <StackPanel HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Stretch">
                 <Button Name="BtnBack"
                         Click="BtnBack_Click"
                         Style="{StaticResource MaterialDesignFlatButton}"
@@ -25,15 +25,23 @@
                            Margin="5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Номер лицевого счёта:"
                               FontSize="20"
                               Margin="5, 5, 5, 17">
                         <TextBox Name="TxbBankBookNumber"
                                  ToolTip="Сплошные 10 цифр"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
@@ -41,188 +49,245 @@
                                  MaxLength="10"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Организация:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbOrganization"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="510"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <TextBlock Text="Данные о помещении:"
                            FontSize="20"
                            Margin="5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Тип собственности:"
                               FontSize="20"
                               Margin="5">
                         <ComboBox Name="CmbProprietary"
-                                  Width="250"
+                                  HorizontalAlignment="Stretch"
                                   IsTextSearchEnabled="True"
                                   IsEditable="True"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Тип собственника:"
                               FontSize="20"
                               Margin="5">
                         <ComboBox Name="CmbOwnership"
-                                  Width="250"
+                                  HorizontalAlignment="Stretch"
                                   IsTextSearchEnabled="True"
                                   IsEditable="True"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Кол-во проживающих:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbNumberOfResidents"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="TxbNum_PreviewTextInput"/>
                     </GroupBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                </Grid>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Общая площадь:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbApartmentArea"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="TxbNum_PreviewTextInput"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <TextBlock Text="Адрес помещения:"
                            FontSize="20"
                            Margin="5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Город:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbCity"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="Txb_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Район:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbArea"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="Txb_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Улица:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbStreet"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="Txb_PreviewTextInput"/>
                     </GroupBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                </Grid>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Номер здания:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbBuildingNumber"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Корпус (если есть):"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbBuildingCorpse"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Номер подъезда:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbEntranceNumber"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="TxbNum_PreviewTextInput"/>
                     </GroupBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                </Grid>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Этаж:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbFloorNumber"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="TxbNum_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Номер помещения:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbApartmentNumber"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
+                                 HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <TextBlock Text="Владелец ЛС:"
                            FontSize="20"
                            Margin="5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <StackPanel Orientation="Horizontal">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Владелец:"
                               FontSize="20"
                               Margin="5">
                         <ComboBox Name="CmbClient"
-                                  Width="400"
+                                  HorizontalAlignment="Stretch"
                                   IsTextSearchEnabled="True"
                                   IsEditable="True"/>
                     </GroupBox>
-                </StackPanel>
+                </Grid>
                 <Button Name="BtnEdit"
                         Click="BtnEdit_Click"
                         Content="Добавить"

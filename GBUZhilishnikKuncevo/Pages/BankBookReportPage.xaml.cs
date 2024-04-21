@@ -58,7 +58,7 @@ namespace GBUZhilishnikKuncevo.Pages
                 {
                     Title = label,
                     DataLabels = true,
-                    LabelPoint = chartPoint => string.Format("{0}", (int)chartPoint.Y),
+                    LabelPoint = chartPoint => string.Format("{0} ₽", (int)chartPoint.Y),
                     Values = new ChartValues<double> { value }
                 });
             }
@@ -80,7 +80,6 @@ namespace GBUZhilishnikKuncevo.Pages
         {
             var date = (e.AddedItems[0] as Accounting).accountingEnd;
             SetChart(date);
-            Console.WriteLine("STOP");
         }
     }
 }

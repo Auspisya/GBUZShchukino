@@ -9,42 +9,71 @@
       Title="Авторизация">
 
     <Grid Background="White">
-        <CheckBox Name="CBShowHidePassword"
-                  Margin="290, 60, 0, 0"
-                  Width="20"
-                  Height="20"
-                  ToolTip="Показать"
-                  Click="CBShowHidePassword_Click"/>
         <StackPanel Orientation="Vertical"
-                    Margin="0, 140, 0, 0">
-            <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    Margin="0, 0, 0, 0">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row="0" Grid.Column="1"
                       Header="Логин:"
                       FontSize="20"
-                      Margin="5, 5, 5, 11"
-                      Width="250">
-                <TextBox Name="TxbLogin"
+                      Margin="5, 5, 5, 15">
+                    <TextBox Name="TxbLogin"
                          Style="{StaticResource MaterialDesignTextBox}"
-                         Width="250"
+                         HorizontalAlignment="Stretch"
                          CaretBrush="#FF0850A4"
                          SelectionBrush="#FF0850A4"
                          VerticalAlignment="Top"
                          MaxLength="25"/>
-            </GroupBox>
-            <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                </GroupBox>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row="1" Grid.Column="1"
                       Header="Пароль:"
                       FontSize="20"
-                      Margin="5, 6, 5, 5"
-                      Width="250">
-                <TextBox Name="TxbPassword"
+                      Margin="5, 6, 5, 5">
+                    <TextBox Name="TxbPassword"
                          Style="{StaticResource MaterialDesignTextBox}"
-                         Width="250"
+                         HorizontalAlignment="Stretch"
                          CaretBrush="#FF0850A4"
                          SelectionBrush="#FF0850A4"
                          VerticalAlignment="Top"
                          Visibility="Hidden"
                          MaxLength="25"
                          TextChanged="TxbPassword_TextChanged"/>
-            </GroupBox>
+                </GroupBox>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Grid.Row="1" Grid.Column="1"
+                  Header="Пароль:"
+                  FontSize="20"
+                  Margin="5, 6, 5, 5">
+                    <PasswordBox Name="PsbPassword" 
+                         HorizontalAlignment="Stretch"
+                         MaxLength="25"
+                         CaretBrush="#FF0850A4"
+                         SelectionBrush="#FF0850A4"
+                         VerticalAlignment="Top"
+                         PasswordChanged="PsbPassword_PasswordChanged"/>
+                </GroupBox>
+                <CheckBox Name="CBShowHidePassword"
+                          Grid.Row="1" Grid.Column="2"
+                  Margin="10, 20, 0, 0"
+                  Width="20"
+                  Height="20"
+                  HorizontalAlignment="Left"
+                  ToolTip="Показать"
+                  Click="CBShowHidePassword_Click"/>
+            </Grid>
+
             <Button Name="BtnLogin"
                     Click="BtnLogin_Click"
                     Content="Войти"
@@ -54,18 +83,5 @@
                     FontSize="20"
                     Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
         </StackPanel>
-        <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                  Header="Пароль:"
-                  FontSize="20"
-                  Margin="0, 225, 0, 0"
-                  Width="250">
-            <PasswordBox Name="PsbPassword" 
-                         Width="250"
-                         MaxLength="25"
-                         CaretBrush="#FF0850A4"
-                         SelectionBrush="#FF0850A4"
-                         VerticalAlignment="Top"
-                         PasswordChanged="PsbPassword_PasswordChanged"/>
-        </GroupBox>
     </Grid>
 </Page>
