@@ -57,6 +57,10 @@ namespace GBUZhilishnikKuncevo.Pages
             accountingId = accounting.id;
 
             CmbCounterNumber.IsEnabled = accounting.Counter != null;
+            if (CmbCounterNumber.IsEnabled)
+            {
+
+            }
             TxbCounterType.IsEnabled = accounting.Counter != null;
         }
 
@@ -179,6 +183,23 @@ namespace GBUZhilishnikKuncevo.Pages
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CmbCounterNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CmbCounterNumber.SelectedIndex == -1) { TxbCounterType.Text = ""; }
+            else
+            {
+                try
+                {
+                    var counterType = (CmbCounterNumber.SelectedItem as Counter).TypeOfCounter.counterName;
+                    TxbCounterType.Text = counterType.ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void CmbBankBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TxbCounterReading.Text = "";
             if (CmbBankBook.SelectedIndex == -1)

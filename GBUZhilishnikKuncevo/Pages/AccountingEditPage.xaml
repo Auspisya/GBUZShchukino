@@ -81,7 +81,7 @@
                     <ComboBox Name="CmbBankBook"
                               Width="250"
                               IsTextSearchEnabled="True"
-                              IsEditable="True"/>
+                              IsEditable="True" SelectionChanged="CmbBankBook_SelectionChanged"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Номер счётчика:"
