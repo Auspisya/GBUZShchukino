@@ -1,0 +1,71 @@
+﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.ServiceCheckPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="К оплате за показания">
+
+    <Grid Background="White">
+        <TextBox Name="TxbSearch"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Text="Введите номер лицевого счёта для поиска..."
+                 Style="{StaticResource MaterialDesignTextBox}"
+                 Width="250"
+                 GotFocus="TxbSearch_GotFocus"
+                 CaretBrush="#FF0850A4"
+                 SelectionBrush="#FF0850A4"/>
+        <Button Name="BtnSearch"
+                Click="BtnSearch_Click"
+                Content="Искать"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="260, 0, 0, 0"/>
+        <Button Name="BtnRefresh"
+                Click="BtnRefresh_Click"
+                Content="Обновить"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 0, 0"/>
+        <Button Name="BtnTotalCheck"
+                Content="Сумма к оплате за период"
+                Click="BtnTotalCheck_Click"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 90, 0"/>
+        <DataGrid Name ="DataServiceCheck"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Margin="0, 40, 0, 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding id}"
+                                    Width="50"/>
+                <DataGridTextColumn Header="ЛС"
+                                    Binding="{Binding Accounting.BankBook.bankBookNumber}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Услуга"
+                                    Binding="{Binding Accounting.Service.TypeOfService.serviceName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Начало"
+                                    Binding="{Binding Accounting.accountingStart, StringFormat=dd/MM/yyyy}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Конец"
+                                    Binding="{Binding Accounting.accountingEnd, StringFormat=dd/MM/yyyy}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="К оплате"
+                                    Binding="{Binding totalPayble}"
+                                    Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

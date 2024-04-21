@@ -1,0 +1,71 @@
+﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.AuthPages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages.AuthPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Авторизация">
+
+    <Grid Background="White">
+        <CheckBox Name="CBShowHidePassword"
+                  Margin="290, 60, 0, 0"
+                  Width="20"
+                  Height="20"
+                  ToolTip="Показать"
+                  Click="CBShowHidePassword_Click"/>
+        <StackPanel Orientation="Vertical"
+                    Margin="0, 140, 0, 0">
+            <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                      Header="Логин:"
+                      FontSize="20"
+                      Margin="5, 5, 5, 11"
+                      Width="250">
+                <TextBox Name="TxbLogin"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         Width="250"
+                         CaretBrush="#FF0850A4"
+                         SelectionBrush="#FF0850A4"
+                         VerticalAlignment="Top"
+                         MaxLength="25"/>
+            </GroupBox>
+            <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                      Header="Пароль:"
+                      FontSize="20"
+                      Margin="5, 6, 5, 5"
+                      Width="250">
+                <TextBox Name="TxbPassword"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         Width="250"
+                         CaretBrush="#FF0850A4"
+                         SelectionBrush="#FF0850A4"
+                         VerticalAlignment="Top"
+                         Visibility="Hidden"
+                         MaxLength="25"
+                         TextChanged="TxbPassword_TextChanged"/>
+            </GroupBox>
+            <Button Name="BtnLogin"
+                    Click="BtnLogin_Click"
+                    Content="Войти"
+                    Foreground="#0850A4"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    FontSize="20"
+                    Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
+        </StackPanel>
+        <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                  Header="Пароль:"
+                  FontSize="20"
+                  Margin="0, 225, 0, 0"
+                  Width="250">
+            <PasswordBox Name="PsbPassword" 
+                         Width="250"
+                         MaxLength="25"
+                         CaretBrush="#FF0850A4"
+                         SelectionBrush="#FF0850A4"
+                         VerticalAlignment="Top"
+                         PasswordChanged="PsbPassword_PasswordChanged"/>
+        </GroupBox>
+    </Grid>
+</Page>

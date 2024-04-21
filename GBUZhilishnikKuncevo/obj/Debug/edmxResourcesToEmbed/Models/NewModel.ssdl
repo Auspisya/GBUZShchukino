@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище menshakova_publicUtilitiesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accounting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="counterId" Type="int" />
+    <Property Name="counterReading" Type="float" Nullable="false" />
+    <Property Name="accountingStart" Type="date" Nullable="false" />
+    <Property Name="accountingEnd" Type="date" Nullable="false" />
+    <Property Name="serviceId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="area" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="street" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="buildingNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="buildingCorpse" Type="nvarchar" MaxLength="10" />
+    <Property Name="entranceNumber" Type="int" Nullable="false" />
+    <Property Name="floorNumber" Type="int" Nullable="false" />
+    <Property Name="apartmentNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Apartment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="addressId" Type="int" Nullable="false" />
+    <Property Name="numberOfResidents" Type="int" Nullable="false" />
+    <Property Name="apartmentArea" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BankBook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bankBookNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="apartmentId" Type="int" Nullable="false" />
+    <Property Name="organization" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="proprietaryId" Type="int" Nullable="false" />
+    <Property Name="typeOfOwnershipId" Type="int" Nullable="false" />
+    <Property Name="clientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Benefit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="benefitName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="discount" Type="float" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phoneNumber" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="passportId" Type="int" Nullable="false" />
+    <Property Name="tinId" Type="int" Nullable="false" />
+    <Property Name="snilsId" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="patronymic" Type="nvarchar" MaxLength="60" />
+    <Property Name="genderId" Type="int" Nullable="false" />
+    <Property Name="dateOfBirth" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Counter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typeOfCounterId" Type="int" Nullable="false" />
+    <Property Name="apartmentId" Type="int" Nullable="false" />
+    <Property Name="counterNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="genderName" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ownership">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="passportNumber" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="passportSeries" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="passportIssuedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="dateOfIssue" Type="date" Nullable="false" />
+    <Property Name="divisionCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="placeOfBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentState">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paymentStateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proprietary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typeOfServiceId" Type="int" Nullable="false" />
+    <Property Name="standartTariff" Type="float" Nullable="false" />
+    <Property Name="unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceCheck">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="accountingId" Type="int" Nullable="false" />
+    <Property Name="totalPayble" Type="money" />
+    <Property Name="description" Type="nvarchar" MaxLength="200" />
+    <Property Name="bankBookId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SNILS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="snilsNumber" Type="nvarchar" MaxLength="14" Nullable="false" />
+    <Property Name="registrationDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TIN">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tinNumber" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="registrationDate" Type="date" Nullable="false" />
+    <Property Name="whoRegistered" Type="nvarchar" MaxLength="120" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TotalCheck">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bankBookId" Type="int" Nullable="false" />
+    <Property Name="fine" Type="money" />
+    <Property Name="totalPayble" Type="money" Nullable="false" />
+    <Property Name="paymentStateId" Type="int" Nullable="false" />
+    <Property Name="benefitId" Type="int" />
+    <Property Name="requiredPaymentDate" Type="date" Nullable="false" />
+    <Property Name="paymentDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfCounter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="counterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TypeOfService">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serviceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Accounting_Counter">
+    <End Role="Counter" Type="Self.Counter" Multiplicity="0..1" />
+    <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Accounting">
+        <PropertyRef Name="counterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accounting_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Accounting">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartment_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Apartment" Type="Self.Apartment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Apartment">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankBook_Apartment">
+    <End Role="Apartment" Type="Self.Apartment" Multiplicity="1" />
+    <End Role="BankBook" Type="Self.BankBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BankBook">
+        <PropertyRef Name="apartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankBook_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="BankBook" Type="Self.BankBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BankBook">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankBook_Ownership">
+    <End Role="Ownership" Type="Self.Ownership" Multiplicity="1" />
+    <End Role="BankBook" Type="Self.BankBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ownership">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BankBook">
+        <PropertyRef Name="typeOfOwnershipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankBook_Proprietary">
+    <End Role="Proprietary" Type="Self.Proprietary" Multiplicity="1" />
+    <End Role="BankBook" Type="Self.BankBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proprietary">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BankBook">
+        <PropertyRef Name="proprietaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Check_Accounting">
+    <End Role="Accounting" Type="Self.Accounting" Multiplicity="1" />
+    <End Role="ServiceCheck" Type="Self.ServiceCheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounting">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServiceCheck">
+        <PropertyRef Name="accountingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="genderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Passport">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="passportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_SNILS">
+    <End Role="SNILS" Type="Self.SNILS" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SNILS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="snilsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_TIN1">
+    <End Role="TIN" Type="Self.TIN" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIN">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="tinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Counter_Apartment">
+    <End Role="Apartment" Type="Self.Apartment" Multiplicity="1" />
+    <End Role="Counter" Type="Self.Counter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Counter">
+        <PropertyRef Name="apartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Counter_TypeOfCounter">
+    <End Role="TypeOfCounter" Type="Self.TypeOfCounter" Multiplicity="1" />
+    <End Role="Counter" Type="Self.Counter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfCounter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Counter">
+        <PropertyRef Name="typeOfCounterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_TypeOfService">
+    <End Role="TypeOfService" Type="Self.TypeOfService" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfService">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="typeOfServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceCheck_BankBook">
+    <End Role="BankBook" Type="Self.BankBook" Multiplicity="1" />
+    <End Role="ServiceCheck" Type="Self.ServiceCheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankBook">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServiceCheck">
+        <PropertyRef Name="bankBookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TotalCheck_BankBook">
+    <End Role="BankBook" Type="Self.BankBook" Multiplicity="1" />
+    <End Role="TotalCheck" Type="Self.TotalCheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankBook">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TotalCheck">
+        <PropertyRef Name="bankBookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TotalCheck_Benefit">
+    <End Role="Benefit" Type="Self.Benefit" Multiplicity="0..1" />
+    <End Role="TotalCheck" Type="Self.TotalCheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Benefit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TotalCheck">
+        <PropertyRef Name="benefitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TotalCheck_PaymentState">
+    <End Role="PaymentState" Type="Self.PaymentState" Multiplicity="1" />
+    <End Role="TotalCheck" Type="Self.TotalCheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentState">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TotalCheck">
+        <PropertyRef Name="paymentStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище menshakova_publicUtilitiesModelContainer">
+    <EntitySet Name="Accounting" EntityType="Self.Accounting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Apartment" EntityType="Self.Apartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BankBook" EntityType="Self.BankBook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Benefit" EntityType="Self.Benefit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Counter" EntityType="Self.Counter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ownership" EntityType="Self.Ownership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentState" EntityType="Self.PaymentState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proprietary" EntityType="Self.Proprietary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceCheck" EntityType="Self.ServiceCheck" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SNILS" EntityType="Self.SNILS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIN" EntityType="Self.TIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TotalCheck" EntityType="Self.TotalCheck" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeOfCounter" EntityType="Self.TypeOfCounter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeOfService" EntityType="Self.TypeOfService" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Accounting_Counter" Association="Self.FK_Accounting_Counter">
+      <End Role="Counter" EntitySet="Counter" />
+      <End Role="Accounting" EntitySet="Accounting" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accounting_Service" Association="Self.FK_Accounting_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Accounting" EntitySet="Accounting" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartment_Address" Association="Self.FK_Apartment_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Apartment" EntitySet="Apartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankBook_Apartment" Association="Self.FK_BankBook_Apartment">
+      <End Role="Apartment" EntitySet="Apartment" />
+      <End Role="BankBook" EntitySet="BankBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankBook_Client" Association="Self.FK_BankBook_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="BankBook" EntitySet="BankBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankBook_Ownership" Association="Self.FK_BankBook_Ownership">
+      <End Role="Ownership" EntitySet="Ownership" />
+      <End Role="BankBook" EntitySet="BankBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankBook_Proprietary" Association="Self.FK_BankBook_Proprietary">
+      <End Role="Proprietary" EntitySet="Proprietary" />
+      <End Role="BankBook" EntitySet="BankBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Check_Accounting" Association="Self.FK_Check_Accounting">
+      <End Role="Accounting" EntitySet="Accounting" />
+      <End Role="ServiceCheck" EntitySet="ServiceCheck" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Passport" Association="Self.FK_Client_Passport">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_SNILS" Association="Self.FK_Client_SNILS">
+      <End Role="SNILS" EntitySet="SNILS" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_TIN1" Association="Self.FK_Client_TIN1">
+      <End Role="TIN" EntitySet="TIN" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Counter_Apartment" Association="Self.FK_Counter_Apartment">
+      <End Role="Apartment" EntitySet="Apartment" />
+      <End Role="Counter" EntitySet="Counter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Counter_TypeOfCounter" Association="Self.FK_Counter_TypeOfCounter">
+      <End Role="TypeOfCounter" EntitySet="TypeOfCounter" />
+      <End Role="Counter" EntitySet="Counter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_TypeOfService" Association="Self.FK_Service_TypeOfService">
+      <End Role="TypeOfService" EntitySet="TypeOfService" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceCheck_BankBook" Association="Self.FK_ServiceCheck_BankBook">
+      <End Role="BankBook" EntitySet="BankBook" />
+      <End Role="ServiceCheck" EntitySet="ServiceCheck" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TotalCheck_BankBook" Association="Self.FK_TotalCheck_BankBook">
+      <End Role="BankBook" EntitySet="BankBook" />
+      <End Role="TotalCheck" EntitySet="TotalCheck" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TotalCheck_Benefit" Association="Self.FK_TotalCheck_Benefit">
+      <End Role="Benefit" EntitySet="Benefit" />
+      <End Role="TotalCheck" EntitySet="TotalCheck" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TotalCheck_PaymentState" Association="Self.FK_TotalCheck_PaymentState">
+      <End Role="PaymentState" EntitySet="PaymentState" />
+      <End Role="TotalCheck" EntitySet="TotalCheck" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

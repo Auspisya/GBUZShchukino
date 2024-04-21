@@ -1,0 +1,79 @@
+﻿<Window x:Class="GBUZhilishnikKuncevo.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com/"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GBUZhilishnikKuncevo"
+        mc:Ignorable="d"
+        Title="ГБУ Жилищник Района Кунцево" MinHeight="600" MinWidth="1200"
+        Icon="./Icons/gerb_kuncevo_moskva.jpg"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing" ResizeMode="CanResizeWithGrip">
+    <Grid Background="#EFEFEF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border CornerRadius="1"
+                Background="White" Grid.ColumnSpan="2">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20"
+                                  Color="LightGray"
+                                  ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel Background="White"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Stretch"
+                        Margin="2">
+                <Image Source="./Icons/gerb_kuncevo_moskva.jpg"
+                   Height="50"
+                   Width="50"/>
+                <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}"
+                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                           VerticalAlignment="Center"
+                           FontSize="30"
+                           Foreground="#045E30"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Margin="5,10,10,10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="White"
+                CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20"
+                                  Color="LightGray"
+                                  ShadowDepth="0"/>
+            </Border.Effect>
+            <Frame x:Name="MenuFrame"
+                   Margin="6"
+                   NavigationUIVisibility="Hidden"/>
+        </Border>
+
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                Margin="10,10,5,10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="White"
+                CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20"
+                                  Color="LightGray"
+                                  ShadowDepth="0"/>
+            </Border.Effect>
+            <Frame x:Name="MainFrame"
+                   Margin="6"
+                   NavigationUIVisibility="Hidden"/>
+        </Border>
+    </Grid>
+</Window>

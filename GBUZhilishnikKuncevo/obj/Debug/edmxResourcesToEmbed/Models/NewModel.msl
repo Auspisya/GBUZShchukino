@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище menshakova_publicUtilitiesModelContainer" CdmEntityContainer="menshakova_publicUtilitiesEntitiesNew">
+    <EntitySetMapping Name="Accounting">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Accounting">
+        <MappingFragment StoreEntitySet="Accounting">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="counterId" ColumnName="counterId" />
+          <ScalarProperty Name="counterReading" ColumnName="counterReading" />
+          <ScalarProperty Name="accountingStart" ColumnName="accountingStart" />
+          <ScalarProperty Name="accountingEnd" ColumnName="accountingEnd" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="buildingNumber" ColumnName="buildingNumber" />
+          <ScalarProperty Name="buildingCorpse" ColumnName="buildingCorpse" />
+          <ScalarProperty Name="entranceNumber" ColumnName="entranceNumber" />
+          <ScalarProperty Name="floorNumber" ColumnName="floorNumber" />
+          <ScalarProperty Name="apartmentNumber" ColumnName="apartmentNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Apartment">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Apartment">
+        <MappingFragment StoreEntitySet="Apartment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="addressId" ColumnName="addressId" />
+          <ScalarProperty Name="numberOfResidents" ColumnName="numberOfResidents" />
+          <ScalarProperty Name="apartmentArea" ColumnName="apartmentArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankBook">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.BankBook">
+        <MappingFragment StoreEntitySet="BankBook">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bankBookNumber" ColumnName="bankBookNumber" />
+          <ScalarProperty Name="apartmentId" ColumnName="apartmentId" />
+          <ScalarProperty Name="organization" ColumnName="organization" />
+          <ScalarProperty Name="proprietaryId" ColumnName="proprietaryId" />
+          <ScalarProperty Name="typeOfOwnershipId" ColumnName="typeOfOwnershipId" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Benefit">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Benefit">
+        <MappingFragment StoreEntitySet="Benefit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="benefitName" ColumnName="benefitName" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="passportId" ColumnName="passportId" />
+          <ScalarProperty Name="tinId" ColumnName="tinId" />
+          <ScalarProperty Name="snilsId" ColumnName="snilsId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="genderId" ColumnName="genderId" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counter">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Counter">
+        <MappingFragment StoreEntitySet="Counter">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeOfCounterId" ColumnName="typeOfCounterId" />
+          <ScalarProperty Name="apartmentId" ColumnName="apartmentId" />
+          <ScalarProperty Name="counterNumber" ColumnName="counterNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="genderName" ColumnName="genderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ownership">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Ownership">
+        <MappingFragment StoreEntitySet="Ownership">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeName" ColumnName="typeName" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passport">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Passport">
+        <MappingFragment StoreEntitySet="Passport">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="passportNumber" ColumnName="passportNumber" />
+          <ScalarProperty Name="passportSeries" ColumnName="passportSeries" />
+          <ScalarProperty Name="passportIssuedBy" ColumnName="passportIssuedBy" />
+          <ScalarProperty Name="dateOfIssue" ColumnName="dateOfIssue" />
+          <ScalarProperty Name="divisionCode" ColumnName="divisionCode" />
+          <ScalarProperty Name="placeOfBirth" ColumnName="placeOfBirth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentState">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.PaymentState">
+        <MappingFragment StoreEntitySet="PaymentState">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="paymentStateName" ColumnName="paymentStateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proprietary">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Proprietary">
+        <MappingFragment StoreEntitySet="Proprietary">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeName" ColumnName="typeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeOfServiceId" ColumnName="typeOfServiceId" />
+          <ScalarProperty Name="standartTariff" ColumnName="standartTariff" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceCheck">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.ServiceCheck">
+        <MappingFragment StoreEntitySet="ServiceCheck">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="accountingId" ColumnName="accountingId" />
+          <ScalarProperty Name="totalPayble" ColumnName="totalPayble" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="bankBookId" ColumnName="bankBookId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SNILS">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.SNILS">
+        <MappingFragment StoreEntitySet="SNILS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="snilsNumber" ColumnName="snilsNumber" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIN">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.TIN">
+        <MappingFragment StoreEntitySet="TIN">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tinNumber" ColumnName="tinNumber" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+          <ScalarProperty Name="whoRegistered" ColumnName="whoRegistered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TotalCheck">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.TotalCheck">
+        <MappingFragment StoreEntitySet="TotalCheck">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bankBookId" ColumnName="bankBookId" />
+          <ScalarProperty Name="fine" ColumnName="fine" />
+          <ScalarProperty Name="totalPayble" ColumnName="totalPayble" />
+          <ScalarProperty Name="paymentStateId" ColumnName="paymentStateId" />
+          <ScalarProperty Name="benefitId" ColumnName="benefitId" />
+          <ScalarProperty Name="requiredPaymentDate" ColumnName="requiredPaymentDate" />
+          <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfCounter">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.TypeOfCounter">
+        <MappingFragment StoreEntitySet="TypeOfCounter">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="counterName" ColumnName="counterName" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfService">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.TypeOfService">
+        <MappingFragment StoreEntitySet="TypeOfService">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="serviceName" ColumnName="serviceName" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a9441dd88e6e4dfa8a375307f536df4a" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Accounting" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Address" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Apartment" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.BankBook" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Benefit" Width="1.5" PointX="13.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Client" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Counter" Width="1.5" PointX="10.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Gender" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Ownership" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Passport" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.PaymentState" Width="1.5" PointX="13.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.PersonalInfo" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Proprietary" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Service" Width="1.5" PointX="10.5" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.ServiceCheck" Width="1.5" PointX="15" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Session" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.SNILS" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.TIN" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.TotalCheck" Width="1.5" PointX="15.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.TypeOfCounter" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.TypeOfService" Width="1.5" PointX="8.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.User" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.UserRole" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.UserStatus" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Accounting_BankBook" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Accounting_Counter" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Accounting_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Check_Accounting" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Apartment_Address1" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_BankBook_Apartment1" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Counter_Apartment" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_BankBook_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_BankBook_Ownership" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_BankBook_Proprietary" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_TotalCheck_BankBook" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_TotalCheck_Benefit" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Client_PersonalInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Client_SNILS" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Client_TIN" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Counter_TypeOfCounter" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_PersonalInfo_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_PersonalInfo_Passport" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_TotalCheck_PaymentState" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_User_PersonalInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Service_TypeOfService" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Session_User" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_User_UserStatus" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,90 @@
+﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.AccountingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Показания">
+
+    <Grid Background="White">
+        <TextBox Name="TxbSearch"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Text="Введите номер лицевого счёта для поиска..."
+                 Style="{StaticResource MaterialDesignTextBox}"
+                 Width="250"
+                 GotFocus="TxbSearch_GotFocus"
+                 CaretBrush="#FF0850A4"
+                 SelectionBrush="#FF0850A4"/>
+        <Button Name="BtnSearch"
+                Click="BtnSearch_Click"
+                Content="Искать"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="260, 0, 0, 0"/>
+        <Button Name="BtnRefresh"
+                Click="BtnRefresh_Click"
+                Content="Обновить"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 0, 0"/>
+        <Button Name="BtnAdd"
+                Click="BtnAdd_Click"
+                Content="Добавить"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 90, 0"/>
+        <DataGrid Name ="DataAccounting"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Margin="0, 40, 0, 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding id}"
+                                    Width="50"/>
+                <DataGridTextColumn Header="ЛС"
+                                    Binding="{Binding BankBook.bankBookNumber}"
+                                    Width="110"/>
+                <DataGridTextColumn Header="Счётчик"
+                                    Binding="{Binding Counter.counterNumber}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Услуга"
+                                    Binding="{Binding Service.TypeOfService.serviceName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Показание"
+                                    Binding="{Binding counterReading}"
+                                    Width="99"/>
+                <DataGridTextColumn Header="Ед. изм."
+                                    Binding="{Binding Service.unit}"
+                                    Width="80"/>
+                <DataGridTextColumn Header="Начало"
+                                    Binding="{Binding accountingStart, StringFormat=dd/MM/yyyy}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Конец"
+                                    Binding="{Binding accountingEnd, StringFormat=dd/MM/yyyy}"
+                                    Width="*"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Name="BtnEditInfo"
+                                        Click="BtnEditInfo_Click"
+                                        Content="Редактировать"
+                                        Foreground="#0850A4"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

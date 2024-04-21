@@ -1,0 +1,108 @@
+﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.BankBookInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Информация о лицевом счёте">
+
+    <Grid Background="White">
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <StackPanel>
+                <Border CornerRadius="20"
+                        Background="#063B79"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Width="800"
+                        Margin="5,5,5,5">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20"
+                                          Color="LightGray"
+                                          ShadowDepth="0"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="6"
+                                HorizontalAlignment="Center">
+                        <TextBlock Name="TxbBankBookNumber"
+                                   Foreground="White"
+                                   Text="[Номер ЛС]"
+                                   TextAlignment="Center"
+                                   FontSize="25"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel Margin="5, 5, 5, 5">
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Организация:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbOrganization"/>
+                    </GroupBox>
+                    <TextBlock Text="Данные о помещении:"
+                           FontSize="20"
+                           Margin="0, 5, 5, 5"
+                           Foreground="#FF0850A4"
+                           Background="#FFD6DAED"/>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Тип собственности:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbProprietary"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Тип собственника:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbOwnership"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Кол-во проживающих:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbNumberOfResidents"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Общая площадь:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbApartmentArea"/>
+                    </GroupBox>
+                    <TextBlock Text="Адрес помещения:"
+                           FontSize="20"
+                           Margin="0, 5, 5, 5"
+                           Foreground="#FF0850A4"
+                           Background="#FFD6DAED"/>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Адрес:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbAddress"/>
+                    </GroupBox>
+                    <TextBlock Text="Владелец ЛС:"
+                           FontSize="20"
+                           Margin="0, 5, 5, 5"
+                           Foreground="#FF0850A4"
+                           Background="#FFD6DAED"/>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Header="Владелец:"
+                              FontSize="20">
+                        <TextBlock Text="Номер"
+                                   Name="TxbClient"/>
+                    </GroupBox>
+                   
+                </StackPanel>
+                <Button Name="BtnBack"
+                        Click="BtnBack_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Content="Назад"
+                        Foreground="#0850A4"
+                        FontSize="20"
+                        Margin="5, 5, 5, 5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
