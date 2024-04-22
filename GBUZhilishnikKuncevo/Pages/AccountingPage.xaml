@@ -67,10 +67,10 @@
                                     Width="80"/>
                 <DataGridTextColumn Header="Начало"
                                     Binding="{Binding accountingStart, StringFormat=dd/MM/yyyy}"
-                                    Width="*"/>
+                                    Width="100"/>
                 <DataGridTextColumn Header="Конец"
                                     Binding="{Binding accountingEnd, StringFormat=dd/MM/yyyy}"
-                                    Width="*"/>
+                                    Width="100"/>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

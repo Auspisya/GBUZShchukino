@@ -141,10 +141,7 @@ namespace GBUZhilishnikKuncevo.Pages.Resources
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message.ToString(),
-                            "Критическая ошибка",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Warning);
+                        MessageBox.Show(ex.Message.ToString(), "Критическая ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
             }

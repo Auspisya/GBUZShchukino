@@ -40,7 +40,7 @@
                 </GroupBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="340" >
-                <lvc:PieChart  Series="{Binding SeriesCollection}" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="340" >
+                <lvc:PieChart  Series="{Binding SeriesCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="340" >
                 </lvc:PieChart>
             </StackPanel>
         </StackPanel>
