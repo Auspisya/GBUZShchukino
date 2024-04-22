@@ -33,25 +33,39 @@ namespace GBUZhilishnikKuncevo.Pages
             // Заполняем текстовые блоки готовыми данными из БД
             TxbName.Text = client.PersonalInfo1.name.ToString();
             TxbSurname.Text = client.PersonalInfo1.surname.ToString();
-            if (client.PersonalInfo1.patronymic == "") { TxbPatronymic.Text = ""; } else { TxbPatronymic.Text = client.PersonalInfo1.patronymic.ToString(); }
-            TxbDivisionCode.Text = client.PersonalInfo1.Passport.divisionCode.ToString();
-            TxbPassportIssuedBy.Text = client.PersonalInfo1.Passport.passportIssuedBy.ToString();
-            TxbPassportNumber.Text = client.PersonalInfo1.Passport.passportNumber.ToString();
-            TxbPassportSeries.Text = client.PersonalInfo1.Passport.passportSeries.ToString();
             TxbPhoneNumber.Text = client.PersonalInfo1.phoneNumber.ToString();
-            TxbPlaceOfBirth.Text = client.PersonalInfo1.Passport.placeOfBirth.ToString();
-            TxbTIN.Text = client.TIN.tinNumber.ToString();
-            TxbWhoRegisteredTIN.Text = client.TIN.whoRegistered.ToString();
-            TxbSNILS.Text = client.SNILS.snilsNumber.ToString();
+            DPDateOfBirth.Text = client.PersonalInfo1.dateOfBirth.ToString();
             //Заполняем поля для выбора готовыми данными из БД
             CmbGender.DisplayMemberPath = "genderName";
             CmbGender.SelectedValuePath = "id";
             CmbGender.ItemsSource = DBConnection.DBConnect.Gender.ToList();
             CmbGender.Text = client.PersonalInfo1.Gender.genderName.ToString();
-            //Заполняем дата-пикеры готовыми данными из БД
-            DPDateOfBirth.Text = client.PersonalInfo1.dateOfBirth.ToString();
-            DPDateOfIssue.Text = client.PersonalInfo1.Passport.dateOfIssue.ToString();
+            if (client.PersonalInfo1.patronymic == "") { TxbPatronymic.Text = ""; } else { TxbPatronymic.Text = client.PersonalInfo1.patronymic.ToString(); }
+            if (client.PersonalInfo1.Passport.divisionCode.ToString() == "" || client.PersonalInfo1.Passport.passportNumber.ToString() == "")
+            {
+                TxbPlaceOfBirthF.Text = client.PersonalInfo1.Passport.placeOfBirth.ToString();
+                TxbPassportIssuedByF.Text = client.PersonalInfo1.Passport.passportIssuedBy.ToString();
+                TxbPassportNumberF.Text = client.PersonalInfo1.Passport.passportNumber.ToString();
+                DPDateOfIssueF.Text = client.PersonalInfo1.Passport.dateOfIssue.ToString();
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowForeignPassport.IsChecked = true;
+            }
+            else
+            {
+                TxbDivisionCode.Text = client.PersonalInfo1.Passport.divisionCode.ToString();
+                TxbPassportIssuedBy.Text = client.PersonalInfo1.Passport.passportIssuedBy.ToString();
+                TxbPassportNumber.Text = client.PersonalInfo1.Passport.passportNumber.ToString();
+                TxbPassportSeries.Text = client.PersonalInfo1.Passport.passportSeries.ToString();
+                TxbPlaceOfBirth.Text = client.PersonalInfo1.Passport.placeOfBirth.ToString();
+                DPDateOfIssue.Text = client.PersonalInfo1.Passport.dateOfIssue.ToString();
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                CBShowPassport.IsChecked = true;
+            }
+            TxbTIN.Text = client.TIN.tinNumber.ToString();
+            TxbWhoRegisteredTIN.Text = client.TIN.whoRegistered.ToString();
             DPTINRegistrationDate.Text = client.TIN.registrationDate.ToString();
+            //Заполняем дата-пикеры готовыми данными из БД
+            TxbSNILS.Text = client.SNILS.snilsNumber.ToString();
             DPSNILSRegistationDate.Text = client.SNILS.registrationDate.ToString();
             #endregion
             //Присваиваем ID квартиросъёмщика, которого выбрали, чтобы использовать в дальнейшем
@@ -65,11 +79,11 @@ namespace GBUZhilishnikKuncevo.Pages
         /// <param name="e"></param>
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbDivisionCode.Text == "" || TxbName.Text == "" || TxbPassportIssuedBy.Text == "" ||
-                TxbPassportNumber.Text == "" || TxbPassportSeries.Text == "" ||
-                TxbPhoneNumber.Text == "" || TxbPlaceOfBirth.Text == "" || TxbSNILS.Text == "" || TxbSurname.Text == "" ||
+            if ((TxbDivisionCode.Text == "" && CBShowPassport.IsChecked.Value) || TxbName.Text == "" || (TxbPassportIssuedBy.Text == "" && TxbPassportIssuedByF.Text == "") ||
+                (TxbPassportNumber.Text == "" && TxbPassportNumberF.Text == "") || (TxbPassportSeries.Text == "" && CBShowPassport.IsChecked.Value) ||
+                TxbPhoneNumber.Text == "" || (TxbPlaceOfBirth.Text == "" && TxbPlaceOfBirthF.Text == "") || TxbSNILS.Text == "" || TxbSurname.Text == "" ||
                 TxbTIN.Text == "" || TxbWhoRegisteredTIN.Text == "" || CmbGender.Text == "" || DPDateOfBirth.Text == "" ||
-                DPDateOfIssue.Text == "" || DPSNILSRegistationDate.Text == "" || DPTINRegistrationDate.Text == "")
+                (DPDateOfIssue.Text == "" && DPDateOfIssueF.Text == "") || DPSNILSRegistationDate.Text == "" || DPTINRegistrationDate.Text == "")
             {
                 MessageBox.Show("Нужно заполнить все поля!",
                     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -91,11 +105,22 @@ namespace GBUZhilishnikKuncevo.Pages
                     client.PersonalInfo1.phoneNumber = TxbPhoneNumber.Text;
                     client.PersonalInfo1.genderId = (CmbGender.SelectedItem as Gender).id;
                     client.PersonalInfo1.dateOfBirth = DateTime.Parse(DPDateOfBirth.Text);
-                    client.PersonalInfo1.Passport.placeOfBirth = TxbPlaceOfBirth.Text;
-                    client.PersonalInfo1.Passport.passportNumber = TxbPassportNumber.Text;
-                    client.PersonalInfo1.Passport.passportSeries = TxbPassportSeries.Text;
-                    client.PersonalInfo1.Passport.passportIssuedBy = TxbPassportIssuedBy.Text;
-                    client.PersonalInfo1.Passport.divisionCode = TxbDivisionCode.Text;
+                    if (CBShowForeignPassport.IsChecked.Value)
+                    {
+                        client.PersonalInfo1.Passport.placeOfBirth = TxbPlaceOfBirthF.Text;
+                        client.PersonalInfo1.Passport.passportNumber = TxbPassportNumberF.Text;
+                        client.PersonalInfo1.Passport.passportSeries = "";
+                        client.PersonalInfo1.Passport.passportIssuedBy = TxbPassportIssuedByF.Text;
+                        client.PersonalInfo1.Passport.divisionCode = "";
+                    }
+                    else
+                    {
+                        client.PersonalInfo1.Passport.placeOfBirth = TxbPlaceOfBirth.Text;
+                        client.PersonalInfo1.Passport.passportNumber = TxbPassportNumber.Text;
+                        client.PersonalInfo1.Passport.passportSeries = TxbPassportSeries.Text;
+                        client.PersonalInfo1.Passport.passportIssuedBy = TxbPassportIssuedBy.Text;
+                        client.PersonalInfo1.Passport.divisionCode = TxbDivisionCode.Text;
+                    }
                     client.PersonalInfo1.Passport.dateOfIssue = DateTime.Parse(DPDateOfIssue.Text);
                     client.TIN.tinNumber = TxbTIN.Text;
                     client.TIN.whoRegistered = TxbWhoRegisteredTIN.Text;
@@ -105,8 +130,7 @@ namespace GBUZhilishnikKuncevo.Pages
                     #endregion
                     //Сохраняем данные в БД
                     context.SaveChanges();
-                    MessageBox.Show("Данные успешно изменены!",
-                            "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     //Возвращаемся обратно
                     Navigation.frameNav.GoBack();
                 }
@@ -164,6 +188,37 @@ namespace GBUZhilishnikKuncevo.Pages
             if (Regex.IsMatch(e.Text, pattern))
             {
                 e.Handled = true;
+            }
+        }
+        private void CBShowForeignPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBShowForeignPassport.IsChecked.Value)
+            {
+                ForeignPassportGrid.Visibility = Visibility.Visible;
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowPassport.IsChecked = false;
+            }
+            else
+            {
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                PassportGrid.Visibility = Visibility.Visible;
+                CBShowPassport.IsChecked = true;
+            }
+
+        }
+        private void CBShowPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBShowPassport.IsChecked.Value)
+            {
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                PassportGrid.Visibility = Visibility.Visible;
+                CBShowForeignPassport.IsChecked = false;
+            }
+            else
+            {
+                ForeignPassportGrid.Visibility = Visibility.Visible;
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowForeignPassport.IsChecked = true;
             }
         }
     }

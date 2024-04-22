@@ -7,8 +7,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GBUZhilishnikKuncevo"
         mc:Ignorable="d"
-        Title="ГБУ Жилищник Района Кунцево" MinHeight="600" MinWidth="1200"
-        Icon="./Icons/gerb_kuncevo_moskva.jpg"
+        Title="ГБУ Жилищник Района Щукино" MinHeight="600" MinWidth="1200"
+        Icon="./Icons/flag.png"
         WindowStartupLocation="CenterScreen"
         Closing="Window_Closing" ResizeMode="CanResizeWithGrip">
     <Grid Background="#EFEFEF">
@@ -31,14 +31,14 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Stretch"
                         Margin="2">
-                <Image Source="./Icons/gerb_kuncevo_moskva.jpg"
+                <Image Source="./Icons/gerb.png"
                    Height="50"
                    Width="50"/>
                 <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}"
                            Style="{StaticResource MaterialDesignBody1TextBlock}"
                            VerticalAlignment="Center"
                            FontSize="30"
-                           Foreground="#045E30"/>
+                           Foreground="#FF005197"/>
             </StackPanel>
         </Border>
 

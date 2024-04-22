@@ -472,6 +472,10 @@
     <Resource Include="Pages\MenuPages\Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pages\Resources\flag.png" />
+    <Resource Include="Pages\Resources\gerb.png" />
+    <Resource Include="Icons\flag.png" />
+    <Resource Include="Icons\gerb.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

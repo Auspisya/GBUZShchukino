@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ГБУ Жилищник района Кунцево">
+      Title="ГБУ Жилищник района Щукино">
 
     <Grid Background="White">
         <Grid Background="White">
@@ -17,7 +17,7 @@
                 <RowDefinition Height="400"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <Image Source="./Resources/gerb_kuncevo_moskva.jpg"
+            <Image Source="./Resources/gerb.png"
                  Grid.Row="0" Grid.Column="0"
                Height="300"
                Width="300"
@@ -42,7 +42,7 @@
                    FontSize="35"
                    Margin="0, 50, 0, 0"
                    Style="{StaticResource MaterialDesignHeadline1TextBlock}"
-                   Foreground="#045E30"/>
+                   Foreground="#FF005197"/>
         </Grid>
     </Grid>
 </Page>

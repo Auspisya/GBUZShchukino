@@ -26,6 +26,14 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Margin="260, 0, 0, 0"/>
+        <Button Name="BtnPrint"
+                Click="BtnPrint_Click"
+                Content="Печать"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 100, 0"/>
         <Button Name="BtnRefresh"
                 Click="BtnRefresh_Click"
                 Content="Обновить"
@@ -40,19 +48,25 @@
                   Margin="0, 40, 0, 0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID"
-                                    Binding="{Binding id}"
+                                    Binding="{Binding BankBook.Client.id}"
                                     Width="50"/>
                 <DataGridTextColumn Header="Фамилия"
-                                    Binding="{Binding PersonalInfo1.surname}"
+                                    Binding="{Binding BankBook.Client.PersonalInfo1.surname}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Имя"
-                                    Binding="{Binding PersonalInfo1.name}"
+                                    Binding="{Binding BankBook.Client.PersonalInfo1.name}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Отчество"
-                                    Binding="{Binding PersonalInfo1.patronymic}"
+                                    Binding="{Binding BankBook.Client.PersonalInfo1.patronymic}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Номер телефона"
-                                    Binding="{Binding PersonalInfo1.phoneNumber}"
+                                    Binding="{Binding BankBook.Client.PersonalInfo1.phoneNumber}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Пеня"
+                                    Binding="{Binding fine}"
+                                    Width="70"/>
+                <DataGridTextColumn Header="К оплате, ₽"
+                                    Binding="{Binding totalPayble}"
                                     Width="*"/>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>

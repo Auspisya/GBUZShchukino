@@ -2,6 +2,7 @@
 using GBUZhilishnikKuncevo.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,16 +62,16 @@ namespace GBUZhilishnikKuncevo.Pages
 
             for (int i = 0; i < clientsList.Count; i++)
             {
-                for (int j = 0; j < clientsId.Count; j++)
+                for (int j = 0; j < debtors.Count; j++)
                 {
-                    if (clientsList[i].id == clientsId[j])
+                    if (clientsList[i].id == debtors[j].BankBook.clientId)
                     {
                         clientData.Add(clientsList[i]);
                     }
                 }
             }
 
-            DataDebtors.ItemsSource = clientData.ToList();
+            DataDebtors.ItemsSource = debtors;
             #endregion
 
         }
@@ -117,7 +118,7 @@ namespace GBUZhilishnikKuncevo.Pages
                     }
                     #endregion
                     //Ищем совпадения в таблице по фамилии
-                    var searchResults = clientData.Where(item => item.PersonalInfo1.surname.ToLower().Contains(searchString)).ToList();
+                    var searchResults = debtors.Where(item => item.BankBook.Client.PersonalInfo1.surname.ToLower().Contains(searchString)).ToList();
 
                     //Заполняем таблицу записями, где есть совпадения
                     DataDebtors.ItemsSource = searchResults.ToList();
@@ -147,7 +148,7 @@ namespace GBUZhilishnikKuncevo.Pages
                         }
                     }
 
-                    DataDebtors.ItemsSource = clientData.ToList();
+                    DataDebtors.ItemsSource = debtors.ToList();
                     #endregion
                 }
 
@@ -187,7 +188,7 @@ namespace GBUZhilishnikKuncevo.Pages
                 }
             }
 
-            DataDebtors.ItemsSource = clientData.ToList();
+            DataDebtors.ItemsSource = debtors.ToList();
             #endregion
         }
         /// <summary>
@@ -197,7 +198,91 @@ namespace GBUZhilishnikKuncevo.Pages
         /// <param name="e"></param>
         private void BtnShowInfo_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.frameNav.Navigate(new ClientInfoPage((sender as Button).DataContext as Client));
+            var debtorCheck = (sender as Button).DataContext as TotalCheck;
+            Navigation.frameNav.Navigate(new ClientInfoPage(debtorCheck.BankBook.Client));
+        }
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            printDG(DataDebtors, "Должники");
+        }
+
+        public void printDG(DataGrid dataGrid, string title)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                FlowDocument fd = new FlowDocument();
+
+                Paragraph p = new Paragraph(new Run(title));
+                p.FontStyle = dataGrid.FontStyle;
+                p.FontFamily = dataGrid.FontFamily;
+                p.FontSize = 18;
+                fd.Blocks.Add(p);
+
+                Table table = new Table();
+                TableRowGroup tableRowGroup = new TableRowGroup();
+                TableRow r = new TableRow();
+                fd.PageWidth = printDialog.PrintableAreaWidth;
+                fd.PageHeight = printDialog.PrintableAreaHeight;
+                fd.BringIntoView();
+
+                fd.TextAlignment = TextAlignment.Center;
+                fd.ColumnWidth = 500;
+                table.CellSpacing = 0;
+                var headers = dataGrid.Columns.Where(e => e.Header != null && e.Header.ToString() != "ID").ToList();
+                var headerList = headers.Select(e => e.Header.ToString()).ToList();
+
+
+                for (int j = 0; j < headerList.Count; j++)
+                {
+
+                    r.Cells.Add(new TableCell(new Paragraph(new Run(headerList[j]))));
+                    r.Cells[j].ColumnSpan = 4;
+                    r.Cells[j].Padding = new Thickness(4);
+
+                    r.Cells[j].BorderBrush = Brushes.Black;
+                    r.Cells[j].FontWeight = FontWeights.Bold;
+                    r.Cells[j].Background = (Brush)new BrushConverter().ConvertFrom("#FF005197");
+                    r.Cells[j].Foreground = Brushes.White;
+                    r.Cells[j].BorderThickness = new Thickness(1, 1, 1, 1);
+                }
+                tableRowGroup.Rows.Add(r);
+                table.RowGroups.Add(tableRowGroup);
+                for (int i = 0; i < dataGrid.Items.Count; i++)
+                {
+
+                    var check = (TotalCheck)dataGrid.Items.GetItemAt(i);
+
+                    table.BorderBrush = Brushes.Gray;
+                    table.BorderThickness = new Thickness(1, 1, 0, 0);
+                    table.FontStyle = dataGrid.FontStyle;
+                    table.FontFamily = dataGrid.FontFamily;
+                    table.FontSize = 13;
+                    tableRowGroup = new TableRowGroup();
+                    r = new TableRow();
+                    var buffer = new List<TableCell>();
+                    buffer.Add(new TableCell(new Paragraph(new Run(check.BankBook.Client.PersonalInfo1.surname))));
+                    buffer.Add(new TableCell(new Paragraph(new Run(check.BankBook.Client.PersonalInfo1.name))));
+                    buffer.Add(new TableCell(new Paragraph(new Run(check.BankBook.Client.PersonalInfo1.patronymic))));
+                    buffer.Add(new TableCell(new Paragraph(new Run(check.BankBook.Client.PersonalInfo1.phoneNumber))));
+                    buffer.Add(new TableCell(new Paragraph(new Run(check.fine.ToString()))));
+                    buffer.Add(new TableCell(new Paragraph(new Run(check.totalPayble.ToString()))));
+                    for (int j = 0; j < headers.Count(); j++)
+                    {
+                        r.Cells.Add(buffer[j]);
+                        r.Cells[j].ColumnSpan = 4;
+                        r.Cells[j].Padding = new Thickness(4);
+                        r.Cells[j].BorderBrush = Brushes.DarkGray;
+                        r.Cells[j].BorderThickness = new Thickness(0, 0, 1, 1);
+                    }
+                    tableRowGroup.Rows.Add(r);
+                    table.RowGroups.Add(tableRowGroup);
+
+                }
+                fd.Blocks.Add(table);
+                printDialog.PrintDocument(((IDocumentPaginatorSource)fd).DocumentPaginator, "");
+
+            }
         }
     }
 }

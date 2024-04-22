@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="К оплате за показания">
+      Title="Квитанции">
 
     <Grid Background="White">
         <TextBox Name="TxbSearch"
@@ -35,7 +35,7 @@
                 HorizontalAlignment="Right"
                 Margin="0, 0, 0, 0"/>
         <Button Name="BtnTotalCheck"
-                Content="Сумма к оплате за период"
+                Content="Единые квитанции"
                 Click="BtnTotalCheck_Click"
                 Foreground="#0850A4"
                 Style="{StaticResource MaterialDesignFlatButton}"
@@ -62,7 +62,7 @@
                 <DataGridTextColumn Header="Конец"
                                     Binding="{Binding Accounting.accountingEnd, StringFormat=dd/MM/yyyy}"
                                     Width="*"/>
-                <DataGridTextColumn Header="К оплате"
+                <DataGridTextColumn Header="К оплате, ₽"
                                     Binding="{Binding totalPayble}"
                                     Width="*"/>
             </DataGrid.Columns>

@@ -13,7 +13,7 @@
             <TextBlock Text="Меню"
                        TextAlignment="Center"
                        FontSize="25"
-                       Foreground="#045E30"
+                       Foreground="#FF005197"
                        Margin="0, 10, 0, 10"/>
             <Button Name="BtnUserProfilePage"
                     Click="BtnUserProfilePage_Click"
@@ -63,11 +63,9 @@
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Foreground="#0850A4"
                     FontSize="20"
-                    Height="60"
+                    Height="40"
+                    Content="Квитанции"
                     Margin="0, 0, 0, 5">
-                <TextBlock TextAlignment="Center">
-                    К оплате за <LineBreak/> показания
-                </TextBlock>
             </Button>
             <Button Name="BtnDebtPage"
                     Click="BtnDebtPage_Click"

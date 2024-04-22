@@ -29,13 +29,23 @@ namespace GBUZhilishnikKuncevo.Pages
             #region Наполняем текстовые блоки информацией из БД
             if (client.PersonalInfo1.patronymic == "") { TxbFullName.Text = client.PersonalInfo1.surname.ToString() + " " + client.PersonalInfo1.name.ToString(); } 
             else { TxbFullName.Text = client.PersonalInfo1.surname.ToString() + " " + client.PersonalInfo1.name.ToString() + " " + client.PersonalInfo1.patronymic.ToString(); }
+            if (client.PersonalInfo1.Passport.divisionCode.ToString() == "" || client.PersonalInfo1.Passport.passportNumber.ToString() == "")
+            {
+                TxbPassportHeader.Text = "Паспортные данные иностранного гражданина:";
+                GBPassportSeries.Visibility = Visibility.Collapsed;
+                DBPassportDivisionCode.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                TxbPassportHeader.Text = "Паспортные данные гражданина РФ:";
+                TxbDivisionCode.Text = client.PersonalInfo1.Passport.divisionCode.ToString();
+                TxbPassportSeries.Text = client.PersonalInfo1.Passport.passportSeries.ToString();
+            }
             TxbNumPassport.Text = client.PersonalInfo1.Passport.passportNumber.ToString();
             TxbDateOfBirth.Text = client.PersonalInfo1.dateOfBirth.ToShortDateString();
             TxbGender.Text = client.PersonalInfo1.Gender.genderName.ToString();
-            TxbPassportSeries.Text = client.PersonalInfo1.Passport.passportSeries.ToString();
             TxbPassportIssuedBy.Text = client.PersonalInfo1.Passport.passportIssuedBy.ToString();
             TxbDateOfIssue.Text = client.PersonalInfo1.Passport.dateOfIssue.ToShortDateString();
-            TxbDivisionCode.Text = client.PersonalInfo1.Passport.divisionCode.ToString();
             TxbPlaceOfBirth.Text = client.PersonalInfo1.Passport.placeOfBirth.ToString();
             TxbWhoRegisteredTIN.Text = client.TIN.whoRegistered.ToString();
             TxbTINRegistrationDate.Text = client.TIN.registrationDate.ToShortDateString();

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Полная ежемесячная сумма к оплате за период">
+      Title="Единые квитанции">
 
     <Grid Background="White">
         <Button Name="BtnBack"
@@ -70,10 +70,10 @@
                 <DataGridTextColumn Header="Льгота"
                                     Binding="{Binding Benefit.benefitName}"
                                     Width="*"/>
-                <DataGridTextColumn Header="Пени"
+                <DataGridTextColumn Header="Пеня"
                                     Binding="{Binding fine}"
                                     Width="*"/>
-                <DataGridTextColumn Header="К оплате"
+                <DataGridTextColumn Header="К оплате, ₽"
                                     Binding="{Binding totalPayble}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Статус"

@@ -61,7 +61,7 @@
                            FontSize="20"
                            Margin="3, 3, 3, 3"
                            Style="{StaticResource MaterialDesignHeadline1TextBlock}"
-                           Foreground="#045E30"/>
+                           Foreground="#FF005197"/>
                 <TextBlock Text="Паспортные данные:"
                            FontSize="20"
                            Margin="5, 5, 5, 5"
