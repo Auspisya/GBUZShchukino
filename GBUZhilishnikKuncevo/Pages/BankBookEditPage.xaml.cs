@@ -105,7 +105,7 @@ namespace GBUZhilishnikKuncevo.Pages
                     //Подключаемся к БД
                     menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
                     #region Берем значения из элементов управления и вносим их в базу данных
-                    var bankBook = context.BankBook.Where(item => item.id == bankBookId).FirstOrDefault();
+                    var bankBook = DBConnection.DBConnect.BankBook.Where(item => item.id == bankBookId).FirstOrDefault();
                     
                     bankBook.proprietaryId = (CmbProprietary.SelectedItem as Proprietary).id;
                     bankBook.clientId = (CmbClient.SelectedItem as Client).id;
@@ -124,7 +124,7 @@ namespace GBUZhilishnikKuncevo.Pages
                     bankBook.organization = TxbOrganization.Text;
                     #endregion
                     //Сохраняем данные в БД
-                    context.SaveChanges();
+                    DBConnection.DBConnect.SaveChanges();
                     MessageBox.Show("Данные успешно изменены!",
                             "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     //Возвращаемся обратно

@@ -39,6 +39,7 @@ namespace GBUZhilishnikKuncevo.Pages.Resources
             CmbPaymentState.DisplayMemberPath = "paymentStateName";
             CmbPaymentState.SelectedValuePath = "id";
             CmbPaymentState.ItemsSource = DBConnection.DBConnect.PaymentState.ToList();
+            CmbPaymentState.IsEnabled = false;
         }
 
         /// <summary>
@@ -156,6 +157,20 @@ namespace GBUZhilishnikKuncevo.Pages.Resources
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.GoBack();
+        }
+
+        private void DPPaymentDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            if (DPRequiredPaymentDate.SelectedDate != null)
+                CmbPaymentState.SelectedIndex = dp.SelectedDate > DPRequiredPaymentDate.SelectedDate ? 1 : 0;
+        }
+
+        private void DPRequiredPaymentDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            if (DPPaymentDate.SelectedDate != null)
+                CmbPaymentState.SelectedIndex = dp.SelectedDate < DPRequiredPaymentDate.SelectedDate ? 1 : 0;
         }
     }
 }

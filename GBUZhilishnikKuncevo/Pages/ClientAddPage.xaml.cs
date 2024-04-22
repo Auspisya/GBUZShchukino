@@ -3,6 +3,7 @@ using GBUZhilishnikKuncevo.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -34,6 +35,7 @@ namespace GBUZhilishnikKuncevo.Pages
             CmbGender.ItemsSource = DBConnection.DBConnect.Gender.ToList();
             ForeignPassportGrid.Visibility = Visibility.Collapsed;
             CBShowPassport.IsChecked = true;
+            DPDateOfBirth.DisplayDateEnd = DateTime.Now.AddYears(-18);
         }
 
         /// <summary>
@@ -98,20 +100,42 @@ namespace GBUZhilishnikKuncevo.Pages
                             };
                         }
                         DBConnection.DBConnect.Passport.Add(passport);
-                        SNILS snils = new SNILS()
+                        var clients_with_snils = DBConnection.DBConnect.Client.Where(item => item.SNILS.snilsNumber == TxbSNILS.Text).ToList();
+                        var snilses = DBConnection.DBConnect.SNILS.Where(item => item.snilsNumber == TxbSNILS.Text).ToList();
+                        if (clients_with_snils.Count() > 0)
+                            throw new ArgumentException("СНИЛС с таким номером уже существует");
+                        SNILS snils = new SNILS();
+                        if (snilses.Count() > 0)
+                            snils = snilses[0];
+                        else
                         {
-                            snilsNumber = TxbSNILS.Text,
-                            registrationDate = DateTime.Parse(DPSNILSRegistationDate.Text)
-                        };
-                        DBConnection.DBConnect.SNILS.Add(snils);
-                        TIN tin = new TIN()
+                            snils = new SNILS()
+                            {
+                                snilsNumber = TxbSNILS.Text,
+                                registrationDate = DateTime.Parse(DPSNILSRegistationDate.Text)
+                            };
+                            DBConnection.DBConnect.SNILS.Add(snils);
+                            DBConnection.DBConnect.SaveChanges();
+                        }
+                        
+                        var clients_with_tin = DBConnection.DBConnect.Client.Where(item => item.TIN.tinNumber == TxbTIN.Text).ToList();
+                        var tins = DBConnection.DBConnect.TIN.Where(item => item.tinNumber == TxbTIN.Text).ToList();
+                        if (clients_with_tin.Count() > 0)
+                            throw new ArgumentException("ИНН с таким номером уже существует");
+                        TIN tin = new TIN();
+                        if (tins.Count() > 0)
+                            tin = tins[0];
+                        else
                         {
-                            tinNumber = TxbTIN.Text,
-                            whoRegistered = TxbWhoRegisteredTIN.Text,
-                            registrationDate = DateTime.Parse(DPTINRegistrationDate.Text)
-                        };
-                        DBConnection.DBConnect.TIN.Add(tin);
-                        DBConnection.DBConnect.SaveChanges();
+                            tin = new TIN()
+                            {
+                                tinNumber = TxbTIN.Text,
+                                whoRegistered = TxbWhoRegisteredTIN.Text,
+                                registrationDate = DateTime.Parse(DPTINRegistrationDate.Text)
+                            };
+                            DBConnection.DBConnect.TIN.Add(tin);
+                            DBConnection.DBConnect.SaveChanges();
+                        }
                         PersonalInfo info = new PersonalInfo()
                         {
                             Gender = CmbGender.SelectedItem as Gender,
@@ -220,6 +244,44 @@ namespace GBUZhilishnikKuncevo.Pages
                 ForeignPassportGrid.Visibility = Visibility.Visible;
                 PassportGrid.Visibility = Visibility.Collapsed;
                 CBShowForeignPassport.IsChecked = true;
+            }
+        }
+
+        private void DP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            dp.DisplayDate = (dp.DisplayDate > dp.DisplayDateEnd.Value ? dp.DisplayDateEnd.Value : dp.DisplayDate);
+        }
+
+        private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            if (dp != null)
+            {
+                // Получаем текст, который будет добавлен к текущему содержимому DatePicker
+                string newText = dp.Text + e.Text;
+
+                DateTime selectedDate;
+                var formats = new[] { "MM/dd/yyyy", "ddd MMM d, yyyy", "M-d-yy", "MMM.d.yyyy", "MM.dd.yyyy", "M.d.yyyy", "d.M.yyyy", "dd/MM/yyyy", "d-M-yy", "d.MMM.yyyy", "dd.MM.yyyy",
+                "d/M/yyyy", "d/MMM/yyyy", "d/M/yy"};
+                if (DateTime.TryParseExact(newText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out selectedDate))
+                {
+                    // Получаем максимально допустимую дату из свойства DisplayDateEnd
+
+                    // Проверяем, не превышает ли выбранная дата максимально допустимую
+                    if (selectedDate > dp.DisplayDateEnd.Value)
+                    {
+                        // Отменяем ввод, если дата превышает максимально допустимую
+                        dp.DisplayDate = dp.DisplayDateEnd.Value;
+                        dp.Text = dp.DisplayDate.ToString();
+                        e.Handled = false;
+                    }
+                }
+                else
+                {
+                    // Отменяем ввод, если введенный текст не является датой
+                    e.Handled = false;
+                }
             }
         }
     }

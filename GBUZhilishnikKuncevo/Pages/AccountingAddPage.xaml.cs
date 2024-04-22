@@ -2,6 +2,7 @@
 using GBUZhilishnikKuncevo.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -214,6 +215,38 @@ namespace GBUZhilishnikKuncevo.Pages
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            if (dp != null)
+            {
+                // Получаем текст, который будет добавлен к текущему содержимому DatePicker
+                string newText = dp.Text + e.Text;
+
+                DateTime selectedDate;
+                var formats = new[] { "MM/dd/yyyy", "ddd MMM d, yyyy", "M-d-yy", "MMM.d.yyyy", "MM.dd.yyyy", "M.d.yyyy", "d.M.yyyy", "dd/MM/yyyy", "d-M-yy", "d.MMM.yyyy", "dd.MM.yyyy",
+                "d/M/yyyy", "d/MMM/yyyy", "d/M/yy"};
+                if (DateTime.TryParseExact(newText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out selectedDate))
+                {
+                    // Получаем максимально допустимую дату из свойства DisplayDateEnd
+
+                    // Проверяем, не превышает ли выбранная дата максимально допустимую
+                    if (selectedDate > dp.DisplayDateEnd.Value)
+                    {
+                        // Отменяем ввод, если дата превышает максимально допустимую
+                        dp.DisplayDate = dp.DisplayDateEnd.Value;
+                        dp.Text = dp.DisplayDate.ToString();
+                        e.Handled = false;
+                    }
+                }
+                else
+                {
+                    // Отменяем ввод, если введенный текст не является датой
+                    e.Handled = false;
                 }
             }
         }

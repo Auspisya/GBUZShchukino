@@ -41,6 +41,11 @@ namespace GBUZhilishnikKuncevo.Pages.AdminPages
             TxbDivisionCode.Text = user.PersonalInfo.Passport.divisionCode.ToString();
             TxbPlaceOfBirth.Text = user.PersonalInfo.Passport.placeOfBirth.ToString();
             TxbUserRole.Text = "Роль: " + user.UserRole.roleName.ToString();
+            if (user.PersonalInfo.Passport.passportSeries.ToString() == "" || user.PersonalInfo.Passport.divisionCode.ToString() == "")
+            {
+                TxbPassportSeries.Visibility = Visibility.Hidden;
+                TxbDivisionCode.Visibility = Visibility.Hidden;
+            }
         }
 
         /// <summary>

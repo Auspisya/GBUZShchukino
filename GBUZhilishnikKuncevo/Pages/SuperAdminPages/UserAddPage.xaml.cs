@@ -3,6 +3,7 @@ using GBUZhilishnikKuncevo.Models;
 using GBUZhilishnikKuncevo.Pages.AuthPages;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -36,6 +37,9 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
             CmbRole.DisplayMemberPath = "roleName";
             CmbRole.SelectedValuePath = "id";
             CmbRole.ItemsSource = DBConnection.DBConnect.UserRole.ToList();
+            ForeignPassportGrid.Visibility = Visibility.Collapsed;
+            CBShowPassport.IsChecked = true;
+            DPDateOfBirth.DisplayDateEnd = DateTime.Now.AddYears(-18);
         }
 
         /// <summary>
@@ -97,11 +101,11 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         /// <param name="e"></param>
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbDivisionCode.Text == "" || TxbName.Text == "" || TxbPassportIssuedBy.Text == "" ||
-                TxbPassportNumber.Text == "" || TxbPassportSeries.Text == "" ||
-                TxbPhoneNumber.Text == "" || TxbPlaceOfBirth.Text == "" || TxbSurname.Text == "" ||
+            if ((TxbDivisionCode.Text == "" && CBShowPassport.IsChecked.Value) || TxbName.Text == "" || (TxbPassportIssuedBy.Text == "" && TxbPassportIssuedByF.Text == "") ||
+                (TxbPassportNumber.Text == "" && TxbPassportNumberF.Text == "") || (TxbPassportSeries.Text == "" && CBShowPassport.IsChecked.Value) ||
+                TxbPhoneNumber.Text == "" || (TxbPlaceOfBirth.Text == "" && TxbPlaceOfBirthF.Text == "") || TxbSurname.Text == "" ||
                 CmbGender.Text == "" || DPDateOfBirth.Text == "" ||
-                DPDateOfIssue.Text == "" || TxbLogin.Text == "" || password == "" || CmbRole.Text == "")
+                (DPDateOfIssue.Text == "" && DPDateOfIssueF.Text == "") || TxbLogin.Text == "" || password == "" || CmbRole.Text == "")
             {
                 MessageBox.Show("Нужно заполнить все поля!",
                     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -116,16 +120,33 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 {
                     try
                     {
-                        Passport passport = new Passport()
+                        Passport passport = new Passport();
+                        if (CBShowPassport.IsChecked.Value)
                         {
-                            passportNumber = TxbPassportNumber.Text,
-                            passportSeries = TxbPassportSeries.Text,
-                            passportIssuedBy = TxbPassportIssuedBy.Text,
-                            placeOfBirth = TxbPlaceOfBirth.Text,
-                            dateOfIssue = DateTime.Parse(DPDateOfIssue.Text),
-                            divisionCode = TxbDivisionCode.Text
-                        };
-
+                            passport = new Passport()
+                            {
+                                passportNumber = TxbPassportNumber.Text,
+                                passportSeries = TxbPassportSeries.Text,
+                                passportIssuedBy = TxbPassportIssuedBy.Text,
+                                placeOfBirth = TxbPlaceOfBirth.Text,
+                                dateOfIssue = DateTime.Parse(DPDateOfIssue.Text),
+                                divisionCode = TxbDivisionCode.Text
+                            };
+                        }
+                        else
+                        {
+                            passport = new Passport()
+                            {
+                                passportNumber = TxbPassportNumberF.Text,
+                                passportSeries = "",
+                                passportIssuedBy = TxbPassportIssuedByF.Text,
+                                placeOfBirth = TxbPlaceOfBirthF.Text,
+                                dateOfIssue = DateTime.Parse(DPDateOfIssueF.Text),
+                                divisionCode = ""
+                            };
+                        }
+                        DBConnection.DBConnect.Passport.Add(passport);
+                        DBConnection.DBConnect.SaveChanges();
                         PersonalInfo info = new PersonalInfo()
                         {
                             Gender = CmbGender.SelectedItem as Gender,
@@ -136,7 +157,8 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                             dateOfBirth = DateTime.Parse(DPDateOfBirth.Text),
                             passportId = passport.id
                         };
-
+                        DBConnection.DBConnect.PersonalInfo.Add(info);
+                        DBConnection.DBConnect.SaveChanges();
                         User user = new User()
                         {
                             login = TxbLogin.Text,
@@ -147,22 +169,15 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                             userStatusId = 2,
                             personalInfoId = info.id
                         };
-
-                        DBConnection.DBConnect.Passport.Add(passport);
-                        DBConnection.DBConnect.PersonalInfo.Add(info);
                         DBConnection.DBConnect.User.Add(user);
                         DBConnection.DBConnect.SaveChanges();
-                        MessageBox.Show("Данные успешно добавлены!",
-                            "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                         Navigation.frameNav.GoBack();
 
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message.ToString(),
-                            "Критическая ошибка",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Warning);
+                        MessageBox.Show(ex.Message.ToString(), "Критическая ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
             }
@@ -201,5 +216,71 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 CBShowHidePassword.ToolTip = "Показать";
             }
         }
+        private void CBShowForeignPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBShowForeignPassport.IsChecked.Value)
+            {
+                ForeignPassportGrid.Visibility = Visibility.Visible;
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowPassport.IsChecked = false;
+            }
+            else
+            {
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                PassportGrid.Visibility = Visibility.Visible;
+                CBShowPassport.IsChecked = true;
+            }
+
+        }
+        private void CBShowPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (CBShowPassport.IsChecked.Value)
+            {
+                ForeignPassportGrid.Visibility = Visibility.Collapsed;
+                PassportGrid.Visibility = Visibility.Visible;
+                CBShowForeignPassport.IsChecked = false;
+            }
+            else
+            {
+                ForeignPassportGrid.Visibility = Visibility.Visible;
+                PassportGrid.Visibility = Visibility.Collapsed;
+                CBShowForeignPassport.IsChecked = true;
+            }
+        }
+
+        private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            
+            var dp = (DatePicker)sender;
+            if (dp != null)
+            {
+                // Получаем текст, который будет добавлен к текущему содержимому DatePicker
+                string newText = dp.Text + e.Text;
+
+                DateTime selectedDate;
+                var formats = new[] { "MM/dd/yyyy", "ddd MMM d, yyyy", "M-d-yy", "MMM.d.yyyy", "MM.dd.yyyy", "M.d.yyyy", "d.M.yyyy", "dd/MM/yyyy", "d-M-yy", "d.MMM.yyyy", "dd.MM.yyyy",
+                "d/M/yyyy", "d/MMM/yyyy", "d/M/yy"};
+                if (DateTime.TryParseExact(newText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out selectedDate))
+                {
+                    // Получаем максимально допустимую дату из свойства DisplayDateEnd
+
+                    // Проверяем, не превышает ли выбранная дата максимально допустимую
+                    
+                    if (selectedDate > dp.DisplayDateEnd.Value)
+                    {
+                        // Отменяем ввод, если дата превышает максимально допустимую
+                        dp.DisplayDate = dp.DisplayDateEnd.Value;
+                        dp.Text = dp.DisplayDate.ToString();
+                        e.Handled = true;
+                    }
+                }
+                else
+                {
+                    // Отменяем ввод, если введенный текст не является датой
+                    e.Handled = false;
+                }
+            }
+        }
     }
+    
 }

@@ -29,6 +29,20 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
             #region Наполняем текстовые блоки информацией из БД
             if (user.PersonalInfo.patronymic == "") { TxbFullName.Text = user.PersonalInfo.surname.ToString() + " " + user.PersonalInfo.name.ToString(); }
             else { TxbFullName.Text = user.PersonalInfo.surname.ToString() + " " + user.PersonalInfo.name.ToString() + " " + user.PersonalInfo.patronymic.ToString(); }
+
+            if (user.PersonalInfo.Passport.divisionCode.ToString() == "" || user.PersonalInfo.Passport.passportNumber.ToString() == "")
+            {
+                TxbPassportHeader.Text = "Паспортные данные иностранного гражданина:";
+                GBPassportSeries.Visibility = Visibility.Collapsed;
+                GBPassportDivisionCode.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                TxbPassportHeader.Text = "Паспортные данные гражданина РФ:";
+                TxbDivisionCode.Text = user.PersonalInfo.Passport.divisionCode.ToString();
+                TxbPassportSeries.Text = user.PersonalInfo.Passport.passportSeries.ToString();
+            }
+
             TxbNumPassport.Text = user.PersonalInfo.Passport.passportNumber.ToString();
             TxbDateOfBirth.Text = user.PersonalInfo.dateOfBirth.ToShortDateString();
             TxbGender.Text = user.PersonalInfo.Gender.genderName.ToString();

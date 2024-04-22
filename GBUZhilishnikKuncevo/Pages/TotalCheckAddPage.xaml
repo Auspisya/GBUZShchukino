@@ -75,7 +75,8 @@
                           Margin="5">
                     <DatePicker Name="DPRequiredPaymentDate"
                                 HorizontalAlignment="Stretch"
-                                BorderBrush="#FF0850A4"/>
+                                BorderBrush="#FF0850A4"
+                                SelectedDateChanged="DPRequiredPaymentDate_SelectedDateChanged"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Grid.Row ="0" Grid.Column="1"
@@ -84,7 +85,8 @@
                           Margin="5">
                     <DatePicker Name="DPPaymentDate"
                                 HorizontalAlignment="Stretch"
-                                BorderBrush="#FF0850A4"/>
+                                BorderBrush="#FF0850A4"
+                                SelectedDateChanged="DPPaymentDate_SelectedDateChanged"/>
                 </GroupBox>
             </Grid>
             <Button Name="BtnAdd"

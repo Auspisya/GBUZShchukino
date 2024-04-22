@@ -1,5 +1,6 @@
 ﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.ClientAddPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -112,7 +113,9 @@
                               Margin="5">
                         <DatePicker Name="DPDateOfBirth"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                 </Grid>
                 <Grid Background="White">
@@ -198,7 +201,9 @@
                               Margin="5">
                         <DatePicker Name="DPDateOfIssue"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Grid.Row ="1" Grid.Column="1"
@@ -295,7 +300,9 @@
                               Margin="5">
                         <DatePicker Name="DPDateOfIssueF"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Grid.Row ="1" Grid.Column="0"
@@ -347,7 +354,9 @@
                               Margin="5">
                         <DatePicker Name="DPTINRegistrationDate"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Grid.Row ="0" Grid.Column="2"
@@ -398,7 +407,9 @@
                               Margin="5">
                         <DatePicker Name="DPSNILSRegistationDate"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                 </Grid>
                 <StackPanel Orientation="Horizontal">

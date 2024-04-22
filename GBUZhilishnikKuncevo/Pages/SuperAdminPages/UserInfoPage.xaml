@@ -33,7 +33,8 @@
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
                     </StackPanel>
                 </Border>
-                <TextBlock Text="Паспортные данные:"
+                <TextBlock Name ="TxbPassportHeader"
+                           Text="Паспортные данные:"
                            FontSize="20"
                            Margin="5"
                            Foreground="#FF0850A4"
@@ -51,7 +52,8 @@
                         <TextBlock Text="Номер"
                                    Name="TxbDateOfBirth"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                    <GroupBox Name ="GBPassportSeries"
+                              Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Header="Серия паспорта:"
                               FontSize="20">
                         <TextBlock Text="Номер"
@@ -75,7 +77,8 @@
                         <TextBlock Text="Номер"
                                    Name="TxbDateOfIssue"/>
                     </GroupBox>
-                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                    <GroupBox Name ="GBPassportDivisionCode"
+                        Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Header="Код подразделения:"
                               FontSize="20">
                         <TextBlock Text="Номер"

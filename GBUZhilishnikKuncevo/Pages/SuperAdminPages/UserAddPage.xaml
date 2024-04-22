@@ -1,6 +1,7 @@
 ﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.SuperAdminPages.UserAddPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages.SuperAdminPages"
@@ -113,15 +114,36 @@
                               Margin="5">
                         <DatePicker Name="DPDateOfBirth"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                 </Grid>
-                <TextBlock Text="Паспортные данные:"
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Паспортные данные РФ:"
+                               Grid.Row="0" Grid.Column="0"
                            FontSize="20"
-                           Margin="5, 17, 5, 5"
+                           Margin="0, 0, 0, 0"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
-                <Grid Background="White">
+                    <CheckBox Name="CBShowPassport"
+                          Grid.Row="0" Grid.Column="0"
+                          Margin="230, 0, 0, 0"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Left"
+                          Width="20"
+                          Height="20"
+                          ToolTip="Перейти на страницу с пользователями"
+                          Click="CBShowPassport_Click"
+                          />
+                </Grid>
+                <Grid Name="PassportGrid" Background="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -129,9 +151,10 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="85"/>
+                        <RowDefinition Height="85"/>
                     </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                              Grid.Row="0" Grid.Column="0"
+                              Grid.Row ="0" Grid.Column="0"
                               Header="Серия паспорта:"
                               FontSize="20"
                               Margin="5, 5, 5, 17">
@@ -146,7 +169,7 @@
                                  MaxLength="4"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                              Grid.Row="0" Grid.Column="1"
+                              Grid.Row ="0" Grid.Column="1"
                               Header="Номер паспорта:"
                               FontSize="20"
                               Margin="5">
@@ -161,7 +184,7 @@
                                  MaxLength="6"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                              Grid.Row="0" Grid.Column="2"
+                              Grid.Row ="0" Grid.Column="2"
                               Header="Паспорт выдан:"
                               FontSize="20"
                               Margin="5">
@@ -172,42 +195,34 @@
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"/>
                     </GroupBox>
-                </Grid>
-                <Grid Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="85"/>
-                    </Grid.RowDefinitions>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                              Grid.Row="0" Grid.Column="0"
+                              Grid.Row ="1" Grid.Column="0"
                               Header="Дата выдачи паспорта:"
                               FontSize="20"
                               Margin="5">
                         <DatePicker Name="DPDateOfIssue"
                                     HorizontalAlignment="Stretch"
-                                    BorderBrush="#FF0850A4"/>
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                              Grid.Row="0" Grid.Column="1"
+                              Grid.Row ="1" Grid.Column="1"
                               Header="Код подразделения:"
                               FontSize="20"
                               Margin="5">
                         <TextBox Name="TxbDivisionCode"
-                                 ToolTip="Образец: 000-000"
                                  Style="{StaticResource MaterialDesignTextBox}"
                                  HorizontalAlignment="Stretch"
                                  CaretBrush="#FF0850A4"
+                                 ToolTip="Образец: 000-000"
                                  SelectionBrush="#FF0850A4"
                                  VerticalAlignment="Top"
                                  PreviewTextInput="TxbNum_PreviewTextInput"
                                  MaxLength="7"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
-                              Grid.Row="0" Grid.Column="2"
+                              Grid.Row ="1" Grid.Column="2"
                               Header="Место рождения:"
                               FontSize="20"
                               Margin="5">
@@ -220,11 +235,95 @@
                                  KeyDown="Txb_KeyDown"/>
                     </GroupBox>
                 </Grid>
-                <TextBlock Text="Данные Пользователя:"
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Паспортные данные иностранного гражданина:"
+                               Grid.Row="0" Grid.Column="0"
                            FontSize="20"
-                           Margin="5, 17, 5, 5"
+                           Margin="0, 10, 0, 0"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
+                    <CheckBox Name="CBShowForeignPassport"
+                          Grid.Row="0" Grid.Column="0"
+                          Margin="450, 10, 0, 0"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Left"
+                          Width="20"
+                          Height="20"
+                          ToolTip="Перейти на страницу с пользователями"
+                          Click="CBShowForeignPassport_Click"/>
+                </Grid>
+
+                <Grid Name="ForeignPassportGrid" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                        <RowDefinition Height="85"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
+                              Header="Номер паспорта:"
+                              FontSize="20"
+                              Margin="5">
+                        <TextBox Name="TxbPassportNumberF"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 HorizontalAlignment="Stretch"
+                                 CaretBrush="#FF0850A4"
+                                 SelectionBrush="#FF0850A4"
+                                 VerticalAlignment="Top"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
+                              Header="Паспорт выдан:"
+                              FontSize="20"
+                              Margin="5">
+                        <TextBox Name="TxbPassportIssuedByF"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 HorizontalAlignment="Stretch"
+                                 CaretBrush="#FF0850A4"
+                                 SelectionBrush="#FF0850A4"
+                                 VerticalAlignment="Top"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="2"
+                              Header="Дата выдачи паспорта:"
+                              FontSize="20"
+                              Margin="5">
+                        <DatePicker Name="DPDateOfIssueF"
+                                    HorizontalAlignment="Stretch"
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="1" Grid.Column="0"
+                              Header="Место рождения:"
+                              FontSize="20"
+                              Margin="5">
+                        <TextBox Name="TxbPlaceOfBirthF"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 HorizontalAlignment="Stretch"
+                                 CaretBrush="#FF0850A4"
+                                 SelectionBrush="#FF0850A4"
+                                 VerticalAlignment="Top"
+                                 KeyDown="Txb_KeyDown"/>
+                    </GroupBox>
+                </Grid>
+                <TextBlock Text="Данные Пользователя:"
+                           FontSize="20"
+                           Margin="5, 5, 5, 5"
+                           Foreground="#FF0850A4"
+                           Background="#FFD6DAED"/>
+                
                 <Grid Background="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>

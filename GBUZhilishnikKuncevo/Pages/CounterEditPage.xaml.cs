@@ -73,17 +73,16 @@ namespace GBUZhilishnikKuncevo.Pages
                 else
                 {
                     //Подключаемся к БД
-                    menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
+                    //menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
                     #region Берем значения из элементов управления и вносим их в базу данных
-                    var counter = context.Counter.Where(item => item.id == counterId).FirstOrDefault();
+                    var counter = DBConnection.DBConnect.Counter.Where(item => item.id == counterId).FirstOrDefault();
                     counter.counterNumber = TxbCounterNumber.Text;
                     counter.typeOfCounterId = (CmbCounterType.SelectedItem as TypeOfCounter).id;
                     counter.apartmentId = (CmbAddress.SelectedItem as Apartment).id;
                     #endregion
                     //Сохраняем данные в БД
-                    context.SaveChanges();
-                    MessageBox.Show("Данные успешно изменены!",
-                            "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DBConnection.DBConnect.SaveChanges();
+                    MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                     //Возвращаемся обратно
                     Navigation.frameNav.GoBack();
                 }
