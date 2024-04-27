@@ -18,7 +18,7 @@
                         Content="Назад"
                         Foreground="#0850A4"
                         FontSize="20"
-                        Margin="5, 5, 5, 5"
+                        Margin="0, 5, 5, 5"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"/>
                 <TextBlock Text="Личные данные:"
@@ -319,9 +319,9 @@
                                  KeyDown="Txb_KeyDown"/>
                     </GroupBox>
                 </Grid>
-                <TextBlock Text="Данные Пользователя:"
+                <TextBlock Text="Данные пользователя для авторизации:"
                            FontSize="20"
-                           Margin="5, 5, 5, 5"
+                           Margin="0, 5, 0, 5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
                 <Grid Background="White">

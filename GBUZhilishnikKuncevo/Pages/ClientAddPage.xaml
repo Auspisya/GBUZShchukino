@@ -22,7 +22,7 @@
                         VerticalAlignment="Bottom"/>
                 <TextBlock Text="Личные данные:"
                            FontSize="20"
-                           Margin="5"
+                           Margin="0"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
                 <Grid Background="White">
@@ -320,7 +320,7 @@
                 </Grid>
                 <TextBlock Text="Данные ИНН:"
                            FontSize="20"
-                           Margin="5, 17, 5, 5"
+                           Margin="0, 17, 0, 5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
                 <Grid Background="White">
@@ -373,7 +373,7 @@
                 </Grid>
                 <TextBlock Text="Данные СНИЛС:"
                            FontSize="20"
-                           Margin="5, 17, 5, 5"
+                           Margin="0, 17, 0, 5"
                            Foreground="#FF0850A4"
                            Background="#FFD6DAED"/>
                 <Grid Background="White">

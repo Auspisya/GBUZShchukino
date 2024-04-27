@@ -55,7 +55,7 @@
                                     Width="110"/>
                 <DataGridTextColumn Header="Счётчик"
                                     Binding="{Binding Counter.counterNumber}"
-                                    Width="*"/>
+                                    Width="100"/>
                 <DataGridTextColumn Header="Услуга"
                                     Binding="{Binding Service.TypeOfService.serviceName}"
                                     Width="*"/>

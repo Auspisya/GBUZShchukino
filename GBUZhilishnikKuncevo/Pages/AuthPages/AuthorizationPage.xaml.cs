@@ -43,20 +43,18 @@ namespace GBUZhilishnikKuncevo.Pages.AuthPages
         {
             try
             {
-                /*
                 string url = $"http://localhost/sign-in?login={TxbLogin.Text}&password={password}";
                 HttpClient client = new HttpClient();
                 var response = client.GetAsync(url).Result;
                 var responseContent = await response.Content.ReadAsStringAsync();
-                */
-                var responseContent = "{\"status\":true, \"description\":\"Авторизация прошла успешно!\",\"RoleUser\":\"SuperAdmin\",\"IdUser\":1}";
+                //var responseContent = "{\"status\":true, \"description\":\"Авторизация прошла успешно!\",\"RoleUser\":\"SuperAdmin\",\"IdUser\":1}";
                 if (TxbLogin.Text == "" || password == "")
                 {
                     MessageBox.Show("Заполните все поля!");
                 }
                 else
                 {
-                    if (true /* response.StatusCode == System.Net.HttpStatusCode.OK */)
+                    if (/* true */ response.StatusCode == System.Net.HttpStatusCode.OK )
                     {
                         var _signIn = JsonConvert.DeserializeObject<SignIn>(responseContent);
                         int userId = _signIn.IdUser; // Да, это глупо, но чтобы наверняка

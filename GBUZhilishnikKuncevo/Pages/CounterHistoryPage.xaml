@@ -10,7 +10,7 @@
       Title="Показания Счётчика">
 
     <Grid Background="White">
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Stretch">
             <Button Name="BtnBack"
                     Click="BtnBack_Click"
                     Style="{StaticResource MaterialDesignFlatButton}"
@@ -20,23 +20,35 @@
                     Margin="5, 5, 5, 5"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom" Cursor="Hand"/>
-            <StackPanel Orientation="Horizontal">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Номер счётчика:"
                           FontSize="20"
+                          Grid.Row="0" Grid.Column="0"
                           Margin="5">
                     <TextBlock Name="TxbCounterNumber"
-                             Width="250"
+                             HorizontalAlignment="Stretch"
                              VerticalAlignment="Top"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Тип счётчика:"
+                          Grid.Row="0" Grid.Column="1"
                           FontSize="20"
                           Margin="5">
                     <TextBlock Name="TxbCounterType"
-                             Width="500"
+                             HorizontalAlignment="Stretch"
                              VerticalAlignment="Top"/>
                 </GroupBox>
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+               
             </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="340" >
                 <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="None" HorizontalAlignment="Stretch" Height="340"  >

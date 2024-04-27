@@ -9,7 +9,7 @@
       Title="Редактирование данных о счётчике">
 
     <Grid Background="White">
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Stretch">
             <Button Name="BtnBack"
                     Click="BtnBack_Click"
                     Style="{StaticResource MaterialDesignFlatButton}"
@@ -19,14 +19,23 @@
                     Margin="5, 5, 5, 5"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom" Cursor="Hand"/>
-            <StackPanel Orientation="Horizontal">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Номер счётчика:"
+                          Grid.Row ="0" Grid.Column="0"
                           FontSize="20"
                           Margin="5">
                     <TextBox Name="TxbCounterNumber"
                              Style="{StaticResource MaterialDesignTextBox}"
-                             Width="250"
+                             HorizontalAlignment="Stretch"
                              CaretBrush="#FF0850A4"
                              SelectionBrush="#FF0850A4"
                              VerticalAlignment="Top"
@@ -34,25 +43,26 @@
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Адрес:"
+                          Grid.Row ="0" Grid.Column="1"
                           FontSize="20"
                           Margin="5">
                     <ComboBox Name="CmbAddress"
-                              Width="500"
+                              HorizontalAlignment="Stretch"
                               IsTextSearchEnabled="True"
                               IsEditable="True"/>
                 </GroupBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Тип счётчика:"
+                          Grid.Row ="1" Grid.Column="0"
+                          HorizontalAlignment="Stretch"
                           FontSize="20"
                           Margin="5">
                     <ComboBox Name="CmbCounterType"
-                              Width="250"
+                              HorizontalAlignment="Stretch"
                               IsTextSearchEnabled="True"
                               IsEditable="True"/>
                 </GroupBox>
-            </StackPanel>
+            </Grid>
             <Button Name="BtnEdit"
                     Click="BtnEdit_Click"
                     Content="Внести изменения"
