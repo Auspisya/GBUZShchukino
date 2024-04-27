@@ -36,8 +36,7 @@ namespace GBUZhilishnikKuncevo.Pages
             TxbCounterNumber.Text = counter.counterNumber;
             TxbCounterType.Text = counter.TypeOfCounter.counterName;
             counterId = counter.id;
-            menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
-            var results = context.Accounting.Where(item => item.counterId == counterId).Select(item => new
+            var results = DBConnection.DBConnect.Accounting.Where(item => item.counterId == counterId).Select(item => new
             {
                 value = item.counterReading,
                 date = item.accountingEnd
@@ -54,7 +53,7 @@ namespace GBUZhilishnikKuncevo.Pages
             {
                 new LineSeries
                 {
-                    Title = "template",
+                    Title = "",
                     Values = values
                 }
             };
