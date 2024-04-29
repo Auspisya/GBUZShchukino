@@ -105,7 +105,7 @@ namespace GBUZhilishnikKuncevo.Pages.Resources
                             //Добавляем данные в БД
                             DBConnection.DBConnect.TotalCheck.Add(totalCheck);
                             DBConnection.DBConnect.SaveChanges();
-                            MessageBox.Show("Чек успешно добавлен!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Квитанция успешно сформирована!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                             Navigation.frameNav.GoBack();
                         }
                         else 
@@ -135,7 +135,7 @@ namespace GBUZhilishnikKuncevo.Pages.Resources
 
                             DBConnection.DBConnect.TotalCheck.Add(totalCheck);
                             DBConnection.DBConnect.SaveChanges();
-                            MessageBox.Show("Чек успешно добавлен!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Квитанция успешно сформирована!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                             Navigation.frameNav.GoBack();
                         }
                     }

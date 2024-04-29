@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages.Resources"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Добавление полной ежемесячной оплаты за все услуги">
+      Title="Формирование квитанции">
 
     <Grid Background="White">
         <StackPanel HorizontalAlignment="Stretch">

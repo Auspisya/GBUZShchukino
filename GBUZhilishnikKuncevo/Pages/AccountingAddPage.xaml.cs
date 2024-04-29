@@ -98,7 +98,7 @@ namespace GBUZhilishnikKuncevo.Pages
                         DBConnection.DBConnect.Accounting.Add(accounting);
                         DBConnection.DBConnect.ServiceCheck.Add(serviceCheck);
                         DBConnection.DBConnect.SaveChanges();
-                        MessageBox.Show("Показания успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Показание успешно добавлено!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                         Navigation.frameNav.GoBack();
 
                     }
