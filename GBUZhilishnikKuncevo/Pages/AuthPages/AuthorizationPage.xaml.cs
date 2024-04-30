@@ -43,7 +43,8 @@ namespace GBUZhilishnikKuncevo.Pages.AuthPages
         {
             try
             {
-                string url = $"http://localhost/sign-in?login={TxbLogin.Text}&password={password}";
+                string url = $"http://localhost/sign-in?login={TxbLogin.Text}&password={password}"; //Сначала формируется URL для запроса, который включает логин и пароль пользователя из элементов дизайна
+                //Создается объект HttpClient, который отправляет асинхронный GET-запрос по указанному URL. Полученный ответ хранится в переменной response.
                 HttpClient client = new HttpClient();
                 var response = client.GetAsync(url).Result;
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -57,14 +58,15 @@ namespace GBUZhilishnikKuncevo.Pages.AuthPages
                     if (/* true */ response.StatusCode == System.Net.HttpStatusCode.OK )
                     {
                         var _signIn = JsonConvert.DeserializeObject<SignIn>(responseContent);
-                        int userId = _signIn.IdUser; // Да, это глупо, но чтобы наверняка
+                        int userId = _signIn.IdUser;
                         //var MainWindow = new MainWindow();
-                        MainWindow.UserId = userId; // Так вот он какой static
+                        MainWindow.UserId = userId;
                         AdminProfilePage.UserId = userId;
                         SuperAdminProfilePage.UserId = userId;
                         MenuPage.Role = _signIn.RoleUser;
                         PasswordChangePage.UserId = userId;
 
+                        //Проверка на актуальность пароля
                         menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
                         var user = context.User.Where(item => item.id == userId).FirstOrDefault();
                         if (user.passwordLastChanged == user.registrationDate || (DateTime.Now - user.passwordLastChanged).Days >= 30)
@@ -74,7 +76,8 @@ namespace GBUZhilishnikKuncevo.Pages.AuthPages
                             MenuNavigation.frameNav.Navigate(new MenuAuthPage());
                         }
                         else 
-                        { 
+                        {
+                            //Осуществляется переход на страницу после авторизации в зависимости от роли пользователя
                             switch (_signIn.RoleUser)
                             {
                                 case "Admin":
@@ -95,6 +98,7 @@ namespace GBUZhilishnikKuncevo.Pages.AuthPages
                     }
                     else
                     {
+                        //Если пользователь не смог зайти спустя 3 попытки, выводит сообщение о том, сколько ему осталось ждать до следующей доступной попытки авторизации
                         string descp = JObject.Parse(responseContent).SelectToken("description").ToString();
                         MessageBox.Show(descp);
                         //MessageBox.Show(JsonConvert.DeserializeObject(responseContent).ToString());

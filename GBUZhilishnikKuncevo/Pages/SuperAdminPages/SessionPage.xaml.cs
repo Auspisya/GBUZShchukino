@@ -29,6 +29,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         public SessionPage()
         {
             InitializeComponent();
+            //Заполнение таблицы данными
             SessionData.ItemsSource = null;
             SessionData.ItemsSource = DBConnection.DBConnect.Session.ToList();
         }

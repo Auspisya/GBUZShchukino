@@ -367,9 +367,8 @@
                               Grid.Row="0" Grid.Column="0"
                               Header="Пароль:"
                               FontSize="20"
-                              Margin="0, 0, 0, 0">
+                              Margin="5, 0, 0, 0">
                         <PasswordBox Name="PsbPassword"
-                                     Margin="0, 0, 0, 0"
                                      HorizontalAlignment="Stretch"
                                      MaxLength="25"
                                      CaretBrush="#FF0850A4"
@@ -381,7 +380,7 @@
                               Grid.Row="0" Grid.Column="0"
                           Header="Пароль:"
                           FontSize="20"
-                          Margin="0, 0, 0, 0">
+                          Margin="5, 0, 0, 0">
                         <TextBox Name="TxbPassword"
                                  Style="{StaticResource MaterialDesignTextBox}"
                                  HorizontalAlignment="Stretch"

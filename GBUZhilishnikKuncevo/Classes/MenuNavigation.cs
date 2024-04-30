@@ -8,7 +8,7 @@ using System.Windows.Controls;
 namespace GBUZhilishnikKuncevo.Classes
 {
     /// <summary>
-    /// Сохраняет историю переадресации
+    /// Сохраняет историю переадресации меню
     /// </summary>
     internal class MenuNavigation
     {

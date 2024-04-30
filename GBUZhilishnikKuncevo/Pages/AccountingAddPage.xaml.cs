@@ -111,7 +111,7 @@ namespace GBUZhilishnikKuncevo.Pages
         }
 
         /// <summary>
-        /// Вывод единицы измерения в зависимости от выбранной услуги
+        /// Вывод единицы измерения и типа счетчика в зависимости от выбранной услуги 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -146,6 +146,8 @@ namespace GBUZhilishnikKuncevo.Pages
                     desiredCounterType = null;
                     break;
             }
+
+            //В зависимости от значения desiredCounterType, выпадающий список счетчиков (CmbCounterNumber) и текстовое поле с типом счетчика (TxbCounterType) делаются доступными или недоступными
             CmbCounterNumber.IsEnabled = desiredCounterType != null;
             TxbCounterType.IsEnabled = desiredCounterType != null;
             if (!TxbCounterType.IsEnabled)
@@ -190,10 +192,15 @@ namespace GBUZhilishnikKuncevo.Pages
             }
         }
 
+        /// <summary>
+        /// Фильтрует поле для выбора счётчика, в зависимости от выбранного лицевого счёта + автоматически подставляет количество проживающих, если выбрана услуга вывоза мусора
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CmbBankBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TxbCounterReading.Text = "";
-            if (CmbBankBook.SelectedIndex == -1)
+            if (CmbBankBook.SelectedIndex == -1) //Если индекс выбранного элемента равен -1 (то есть ничего не выбрано), то список счетчиков (CmbCounterNumber) очищается
             {
                 CmbCounterNumber.ItemsSource = new List<Counter>();
             }
@@ -203,7 +210,7 @@ namespace GBUZhilishnikKuncevo.Pages
                 {
                     var bankBook = CmbBankBook.SelectedItem as BankBook;
                     var service = CmbService.SelectedItem as Service;
-                    if (desiredCounterType != null)
+                    if (desiredCounterType != null) //Если определен тип счетчика (desiredCounterType), то обновляется источник данных для выпадающего списка счетчиков, фильтруя их по критериям
                     {
                         CmbCounterNumber.ItemsSource = DBConnection.DBConnect.Counter.ToList().Where(x =>
                        x.apartmentId == bankBook.apartmentId && x.typeOfCounterId == desiredCounterType.id).ToList();
@@ -219,6 +226,11 @@ namespace GBUZhilishnikKuncevo.Pages
             }
         }
 
+        /// <summary>
+        /// Ограничитель по выбору времени
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var dp = (DatePicker)sender;

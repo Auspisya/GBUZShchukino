@@ -55,7 +55,7 @@
                                     Binding="{Binding User.login}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Начало сессии"
-                                    Binding="{Binding sessionStart, StringFormat=MM/dd/yyyy HH:mm:ss}"
+                                    Binding="{Binding sessionStart, StringFormat=dd/MM/yyyy HH:mm:ss}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Количество попыток"
                                     Binding="{Binding authAttempts}"

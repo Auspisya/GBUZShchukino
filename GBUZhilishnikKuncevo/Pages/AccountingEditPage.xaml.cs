@@ -121,7 +121,7 @@ namespace GBUZhilishnikKuncevo.Pages
         }
 
         /// <summary>
-        /// Вывод единицы измерения в зависимости от выбранной услуги
+        /// Вывод единицы измерения и типа счетчика в зависимости от выбранной услуги 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

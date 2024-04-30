@@ -367,7 +367,7 @@
                               Grid.Row="0" Grid.Column="0"
                               Header="Пароль:"
                               FontSize="20"
-                              Margin="0, 0, 0, 0">
+                              Margin="5, 0, 0, 0">
                         <PasswordBox Name="PsbPassword"
                                      Margin="0, 0, 0, 0"
                                      HorizontalAlignment="Stretch"
@@ -379,9 +379,9 @@
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Grid.Row="0" Grid.Column="0"
-                          Header="Пароль:"
-                          FontSize="20"
-                          Margin="0, 0, 0, 0">
+                              Header="Пароль:"
+                              FontSize="20"
+                              Margin="5, 0, 0, 0">
                         <TextBox Name="TxbPassword"
                                  Style="{StaticResource MaterialDesignTextBox}"
                                  HorizontalAlignment="Stretch"
@@ -395,11 +395,11 @@
                     <CheckBox Name="CBShowHidePassword"
                               HorizontalAlignment="Stretch"
                               Grid.Row="0" Grid.Column="1"
-                          Margin="0, 0, 0, 0"
-                          Width="20"
-                          Height="20"
-                          ToolTip="Показать"
-                          Click="CBShowHidePassword_Click"/>
+                              Margin="0, 0, 0, 0"
+                              Width="20"
+                              Height="20"
+                              ToolTip="Показать"
+                              Click="CBShowHidePassword_Click"/>
                 </Grid>
                 <Button Name="BtnEdit"
                         Click="BtnEdit_Click"

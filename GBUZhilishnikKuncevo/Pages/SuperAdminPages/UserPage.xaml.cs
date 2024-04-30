@@ -26,7 +26,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         {
             InitializeComponent();
             UserData.ItemsSource = null;
-            UserData.ItemsSource = DBConnection.DBConnect.User.ToList();
+            UserData.ItemsSource = DBConnection.DBConnect.User.ToList(); //Заполнение таблицы данными из БД
         }
 
         /// <summary>

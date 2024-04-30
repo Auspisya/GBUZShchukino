@@ -28,6 +28,7 @@ namespace GBUZhilishnikKuncevo.Pages.AdminPages
         public AdminProfilePage()
         {
             InitializeComponent();
+            #region Заполнение элементов дизайна информацией из БД
             menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
             var user = context.User.Where(item => item.id == UserId).FirstOrDefault();
             if (user.PersonalInfo.patronymic == "") { TxbUserFullName.Text = user.PersonalInfo.surname.ToString() + " " + user.PersonalInfo.name.ToString(); }
@@ -40,16 +41,17 @@ namespace GBUZhilishnikKuncevo.Pages.AdminPages
             TxbDateOfIssue.Text = user.PersonalInfo.Passport.dateOfIssue.ToShortDateString();
             TxbDivisionCode.Text = user.PersonalInfo.Passport.divisionCode.ToString();
             TxbPlaceOfBirth.Text = user.PersonalInfo.Passport.placeOfBirth.ToString();
-            TxbUserRole.Text = "Роль: " + user.UserRole.roleName.ToString();
+            if (user.UserRole.roleName == "SuperAdmin") { TxbUserRole.Text = "Роль: Главный администратор"; } else { TxbUserRole.Text = "Роль: Администратор-диспетчер"; }
             if (user.PersonalInfo.Passport.passportSeries.ToString() == "" || user.PersonalInfo.Passport.divisionCode.ToString() == "")
             {
                 TxbPassportSeries.Visibility = Visibility.Hidden;
                 TxbDivisionCode.Visibility = Visibility.Hidden;
             }
+            #endregion
         }
 
         /// <summary>
-        /// Выход из профиля
+        /// Выход из профиля, переход на страницу авторизации
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

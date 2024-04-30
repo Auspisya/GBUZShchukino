@@ -28,7 +28,9 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         public SuperAdminProfilePage()
         {
             InitializeComponent();
+
             menshakova_publicUtilitiesEntities context = new menshakova_publicUtilitiesEntities();
+            #region Заполнение элементов дизайна информацией из БД
             var user = context.User.Where(item => item.id == UserId).FirstOrDefault();
             if (user.PersonalInfo.patronymic == "") { TxbUserFullName.Text = user.PersonalInfo.surname.ToString() + " " + user.PersonalInfo.name.ToString(); }
             else { TxbUserFullName.Text = user.PersonalInfo.surname.ToString() + " " + user.PersonalInfo.name.ToString() + " " + user.PersonalInfo.patronymic.ToString(); }
@@ -40,12 +42,13 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
             TxbDateOfIssue.Text = user.PersonalInfo.Passport.dateOfIssue.ToShortDateString();
             TxbDivisionCode.Text = user.PersonalInfo.Passport.divisionCode.ToString();
             TxbPlaceOfBirth.Text = user.PersonalInfo.Passport.placeOfBirth.ToString();
-            TxbUserRole.Text = "Роль: " + user.UserRole.roleName.ToString();
+            if (user.UserRole.roleName == "SuperAdmin") { TxbUserRole.Text = "Роль: Главный администратор"; } else { TxbUserRole.Text = "Роль: Администратор-диспетчер"; }
             if (user.PersonalInfo.Passport.passportSeries.ToString() == "" || user.PersonalInfo.Passport.divisionCode.ToString() == "")
             {
                 TxbPassportSeries.Visibility = Visibility.Hidden;
                 TxbDivisionCode.Visibility = Visibility.Hidden;
             }
+            #endregion
         }
 
         /// <summary>
@@ -95,8 +98,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 ImageId.Visibility = Visibility.Hidden;
                 ImageId.Height = 0;
                 ImageId.Width = 0;
-                TxbUsers.Visibility = Visibility.Hidden;
-                CBShowUsers.Visibility = Visibility.Hidden;
+                BtnShowUsers.Visibility = Visibility.Hidden;
                 CBShowPassportInfo.ToolTip = "Скрыть";
             }
             else
@@ -106,8 +108,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 ImageId.Visibility = Visibility.Visible;
                 ImageId.Height = 250;
                 ImageId.Width = 250;
-                TxbUsers.Visibility = Visibility.Visible;
-                CBShowUsers.Visibility = Visibility.Visible;
+                BtnShowUsers.Visibility = Visibility.Visible;
                 CBShowPassportInfo.ToolTip = "Показать";
             }
         }
@@ -116,10 +117,9 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CBShowUsers_Click(object sender, RoutedEventArgs e)
+        private void BtnShowUsers_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.Navigate(new UserPage());
         }
-        
     }
 }

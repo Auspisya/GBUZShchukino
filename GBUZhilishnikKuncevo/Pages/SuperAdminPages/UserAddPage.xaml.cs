@@ -30,6 +30,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         public UserAddPage()
         {
             InitializeComponent();
+            #region Заполнение элементов дизайна информацией из БД
             CmbGender.DisplayMemberPath = "genderName";
             CmbGender.SelectedValuePath = "id";
             CmbGender.ItemsSource = DBConnection.DBConnect.Gender.ToList();
@@ -40,6 +41,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
             ForeignPassportGrid.Visibility = Visibility.Collapsed;
             CBShowPassport.IsChecked = true;
             DPDateOfBirth.DisplayDateEnd = DateTime.Now.AddYears(-18);
+            #endregion
         }
 
         /// <summary>
@@ -183,11 +185,20 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
             }
         }
 
+        /// <summary>
+        /// Меняет содержимое в зависимости от того, что было введено в поле ввода пароля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TxbPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             password = TxbPassword.Text;
         }
-
+        /// <summary>
+        /// Меняет содержимое в зависимости от того, что было введено в текстовом поле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PsbPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             password = PsbPassword.Password;
@@ -216,6 +227,11 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 CBShowHidePassword.ToolTip = "Показать";
             }
         }
+        /// <summary>
+        /// Показать/скрыть поля для заполнения паспортных данных иностранного гражданина
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CBShowForeignPassport_Click(object sender, RoutedEventArgs e)
         {
             if (CBShowForeignPassport.IsChecked.Value)
@@ -230,7 +246,11 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 PassportGrid.Visibility = Visibility.Visible;
                 CBShowPassport.IsChecked = true;
             }
-
+            /// <summary>
+            /// Показать/скрыть поля для заполнения паспортных данных РФ
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
         }
         private void CBShowPassport_Click(object sender, RoutedEventArgs e)
         {
@@ -248,6 +268,11 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
             }
         }
 
+        /// <summary>
+        /// Ограничитель ввода даты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             
