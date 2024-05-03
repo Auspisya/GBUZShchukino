@@ -201,24 +201,38 @@ namespace GBUZhilishnikKuncevo.Pages
             var debtorCheck = (sender as Button).DataContext as TotalCheck;
             Navigation.frameNav.Navigate(new ClientInfoPage(debtorCheck.BankBook.Client));
         }
+        /// <summary>
+        /// Печать таблицы с должниками
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
             printDG(DataDebtors, "Должники");
         }
 
+        /// <summary>
+        /// Метод для печати содержимого таблицы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void printDG(DataGrid dataGrid, string title)
         {
+            // Создание диалогового окна для печати.
             PrintDialog printDialog = new PrintDialog();
             if (printDialog.ShowDialog() == true)
             {
+                // Создание потокового документа для содержимого печати.
                 FlowDocument fd = new FlowDocument();
 
+                // Добавление заголовка в потоковый документ.
                 Paragraph p = new Paragraph(new Run(title));
                 p.FontStyle = dataGrid.FontStyle;
                 p.FontFamily = dataGrid.FontFamily;
                 p.FontSize = 18;
                 fd.Blocks.Add(p);
 
+                // Создание таблицы для данных из DataGrid.
                 Table table = new Table();
                 TableRowGroup tableRowGroup = new TableRowGroup();
                 TableRow r = new TableRow();
@@ -226,13 +240,16 @@ namespace GBUZhilishnikKuncevo.Pages
                 fd.PageHeight = printDialog.PrintableAreaHeight;
                 fd.BringIntoView();
 
+                // Установка размеров страницы и выравнивания текста.
                 fd.TextAlignment = TextAlignment.Center;
                 fd.ColumnWidth = 500;
                 table.CellSpacing = 0;
+
+                // Получение заголовков столбцов DataGrid.
                 var headers = dataGrid.Columns.Where(e => e.Header != null && e.Header.ToString() != "ID").ToList();
                 var headerList = headers.Select(e => e.Header.ToString()).ToList();
 
-
+                // Добавление заголовков в таблицу.
                 for (int j = 0; j < headerList.Count; j++)
                 {
 
@@ -248,11 +265,12 @@ namespace GBUZhilishnikKuncevo.Pages
                 }
                 tableRowGroup.Rows.Add(r);
                 table.RowGroups.Add(tableRowGroup);
+                // Добавление данных из DataGrid в таблицу.
                 for (int i = 0; i < dataGrid.Items.Count; i++)
                 {
-
+                    // Получение объекта TotalCheck из элемента DataGrid.
                     var check = (TotalCheck)dataGrid.Items.GetItemAt(i);
-
+                    // Создание строки для каждого элемента DataGrid.
                     table.BorderBrush = Brushes.Gray;
                     table.BorderThickness = new Thickness(1, 1, 0, 0);
                     table.FontStyle = dataGrid.FontStyle;
@@ -267,6 +285,7 @@ namespace GBUZhilishnikKuncevo.Pages
                     buffer.Add(new TableCell(new Paragraph(new Run(check.BankBook.Client.PersonalInfo1.phoneNumber))));
                     buffer.Add(new TableCell(new Paragraph(new Run(check.fine.ToString()))));
                     buffer.Add(new TableCell(new Paragraph(new Run(check.totalPayble.ToString()))));
+                    // Добавление данных в строки таблицы.
                     for (int j = 0; j < headers.Count(); j++)
                     {
                         r.Cells.Add(buffer[j]);
@@ -279,7 +298,9 @@ namespace GBUZhilishnikKuncevo.Pages
                     table.RowGroups.Add(tableRowGroup);
 
                 }
+                // Добавление таблицы в потоковый документ.
                 fd.Blocks.Add(table);
+                // Печать документа.
                 printDialog.PrintDocument(((IDocumentPaginatorSource)fd).DocumentPaginator, "");
 
             }

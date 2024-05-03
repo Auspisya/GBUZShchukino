@@ -121,7 +121,7 @@ namespace GBUZhilishnikKuncevo.Pages
         }
 
         /// <summary>
-        /// Вывод единицы измерения и типа счетчика в зависимости от выбранной услуги 
+        /// Вывод единицы измерения и фильтрация типа счетчика в зависимости от выбранных услуги и лицевого счёта
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -199,7 +199,11 @@ namespace GBUZhilishnikKuncevo.Pages
                 }
             }
         }
-
+        /// <summary>
+        /// Фильтрует поле для выбора счётчика, в зависимости от выбранного лицевого счёта + автоматически подставляет количество проживающих, если выбрана услуга вывоза мусора
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CmbBankBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TxbCounterReading.Text = "";
@@ -228,7 +232,11 @@ namespace GBUZhilishnikKuncevo.Pages
                 }
             }
         }
-
+        /// <summary>
+        /// Ограничитель по выбору времени
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var dp = (DatePicker)sender;

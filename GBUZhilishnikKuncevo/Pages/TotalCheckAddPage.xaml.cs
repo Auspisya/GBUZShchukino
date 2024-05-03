@@ -155,17 +155,27 @@ namespace GBUZhilishnikKuncevo.Pages.Resources
         {
             Navigation.frameNav.GoBack();
         }
-
+        /// <summary>
+        /// Обработчик события изменения выбранной даты в элементе управления DatePicker для даты оплаты.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DPPaymentDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var dp = (DatePicker)sender;
+            // Если дата оплаты больше или равна требуемой дате оплаты, устанавливаем индекс выбранного элемента в выпадающем списке состояния платежа равным несвоевременной оплате.
             if (DPRequiredPaymentDate.SelectedDate != null)
                 CmbPaymentState.SelectedIndex = dp.SelectedDate > DPRequiredPaymentDate.SelectedDate ? 1 : 0;
         }
-
+        /// <summary>
+        /// Обработчик события изменения выбранной даты в элементе управления DatePicker для требуемой даты оплаты.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DPRequiredPaymentDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var dp = (DatePicker)sender;
+            // Если дата оплаты меньше требуемой даты оплаты, устанавливаем индекс выбранного элемента в выпадающем списке состояния платежа равным своевременной оплате.
             if (DPPaymentDate.SelectedDate != null)
                 CmbPaymentState.SelectedIndex = dp.SelectedDate < DPRequiredPaymentDate.SelectedDate ? 1 : 0;
         }

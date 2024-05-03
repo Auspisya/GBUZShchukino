@@ -33,7 +33,7 @@
                                    FontSize="25"
                                    Margin="80, 25, 0, 0"
                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                                   Foreground="#063B79"/>
+                                   Foreground="#DFB100"/>
                     <Button Name="BtnLogOut"
                                 Grid.Row ="0" Grid.Column="1"
                                 VerticalAlignment="Top"

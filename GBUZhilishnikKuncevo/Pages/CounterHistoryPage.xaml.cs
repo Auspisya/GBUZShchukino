@@ -33,9 +33,13 @@ namespace GBUZhilishnikKuncevo.Pages
         public CounterHistoryPage(Counter counter)
         {
             InitializeComponent();
+            // Устанавливаем текстовое значение номера выбранного счетчика.
             TxbCounterNumber.Text = counter.counterNumber;
+            // Устанавливаем текстовое значение типа выбранного счетчика.
             TxbCounterType.Text = counter.TypeOfCounter.counterName;
+            // Устанавливаем значение counterId равным идентификатору выбранного счетчика.
             counterId = counter.id;
+            // Получаем данные из базы данных для заполнения графика.
             var results = DBConnection.DBConnect.Accounting.Where(item => item.counterId == counterId).Select(item => new
             {
                 value = item.counterReading,
@@ -44,7 +48,8 @@ namespace GBUZhilishnikKuncevo.Pages
             Labels = new List<string>();
             YFormatter = value => value.ToString("C");
             ChartValues<double> values = new ChartValues<double>();
-            foreach( var item in results)
+            // Заполняем коллекции значений и меток данными из результатов запроса.
+            foreach ( var item in results)
             {
                 values.Add(item.value);
                 Labels.Add(item.date.ToString());
@@ -59,7 +64,11 @@ namespace GBUZhilishnikKuncevo.Pages
             };
             DataContext = this;
         }
-
+        /// <summary>
+        /// Переадресация на предыдущую страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.GoBack();
