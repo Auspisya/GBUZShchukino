@@ -318,3 +318,8 @@ C:\Users\mensh\source\repos\GBUZSchukino\GBUZShchukino\GBUZhilishnikKuncevo\obj\
 C:\Users\mensh\source\repos\GBUZSchukino\GBUZShchukino\GBUZhilishnikKuncevo\obj\Debug\GBUZhilishnikKuncevo.csproj.CopyComplete
 C:\Users\mensh\source\repos\GBUZSchukino\GBUZShchukino\GBUZhilishnikKuncevo\obj\Debug\GBUZhilishnikKuncevo.exe
 C:\Users\mensh\source\repos\GBUZSchukino\GBUZShchukino\GBUZhilishnikKuncevo\obj\Debug\GBUZhilishnikKuncevo.pdb
+D:\Projects\GZKPractice\GBUZhilishnikKuncevo\bin\Debug\QRCoder.dll
+D:\Projects\GZKPractice\GBUZhilishnikKuncevo\obj\Debug\Pages\ClientRequests\ClientRequestsPage.g.cs
+D:\Projects\GZKPractice\GBUZhilishnikKuncevo\obj\Debug\Pages\ClientRequests\ClientRequestIssuePage.g.cs
+D:\Projects\GZKPractice\GBUZhilishnikKuncevo\obj\Debug\Pages\ClientRequests\ClientRequestsPage.baml
+D:\Projects\GZKPractice\GBUZhilishnikKuncevo\obj\Debug\Pages\ClientRequests\ClientRequestIssuePage.baml

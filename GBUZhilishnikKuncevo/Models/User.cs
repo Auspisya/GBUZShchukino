@@ -18,6 +18,7 @@ namespace GBUZhilishnikKuncevo.Models
         public User()
         {
             this.Session = new HashSet<Session>();
+            this.ClientRequest = new HashSet<ClientRequest>();
         }
     
         public int id { get; set; }
@@ -34,5 +35,7 @@ namespace GBUZhilishnikKuncevo.Models
         public virtual ICollection<Session> Session { get; set; }
         public virtual UserRole UserRole { get; set; }
         public virtual UserStatus UserStatus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientRequest> ClientRequest { get; set; }
     }
 }

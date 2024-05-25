@@ -1,0 +1,66 @@
+﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.ClientRequests.ClientRequestsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Обращения пользователей">
+
+    <Grid Background="White">
+        <Button Name="BtnBack"
+                Click="BtnBack_Click"
+                Content="Назад"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 0, 0" Cursor="Hand"/>
+        <Button Name="BtnRefresh"
+                Click="BtnRefresh_Click"
+                Content="Обновить"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 75, 0" Cursor="Hand"/>
+        <Button Name="BtnIssued"
+                Click="BtnIssued_Click"
+                Content="Рассмотренные"
+                Foreground="#0850A4"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 175, 0" Cursor="Hand"/>
+        <DataGrid Name ="DataRequests"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Margin="0, 40, 0, 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                        Binding="{Binding id}"
+                                        Width="50"/>
+                <DataGridTextColumn Header="Обращение"
+                                        Binding="{Binding request}"
+                                        Width="*"/>
+                <DataGridTextColumn Header="Дата создания обращения"
+                                        Binding="{Binding requestCreated, StringFormat=\{0:dd.MM.yy\}}"
+                                        Width="150"/>
+                <DataGridTemplateColumn Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Name="BtnIssueInfo"
+                                    Click="BtnIssueInfo_Click"
+                                    Content="Рассмотреть"
+                                    Foreground="#0850A4"
+                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

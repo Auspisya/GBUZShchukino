@@ -148,5 +148,14 @@ namespace GBUZhilishnikKuncevo.Pages
         {
             Navigation.frameNav.Navigate(new CounterHistoryPage((sender as Button).DataContext as Counter));
         }
+
+        private void DataCounter_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            var counter = e.Row.DataContext as Counter;
+            if(counter.endOfOperation <= counter.startOfOperation)
+                e.Row.Background = new SolidColorBrush(Colors.Orange);
+            else
+                e.Row.Background = new SolidColorBrush(Colors.White);
+        }
     }
 }

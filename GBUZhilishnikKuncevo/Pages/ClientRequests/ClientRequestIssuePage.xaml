@@ -1,0 +1,83 @@
+﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.ClientRequests.ClientRequestIssuePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Обращение пользователя">
+
+    <Grid Background="White">
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel HorizontalAlignment="Stretch" Cursor="Hand">
+            <Button Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Content="Назад"
+                    Foreground="#0850A4"
+                    FontSize="20"
+                    Margin="5, 5, 5, 5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" Cursor="Hand"/>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Header="Дата Обращения:"
+                          Grid.Row="0" Grid.Column="0"
+                          FontSize="20"
+                          Margin="5">
+                    <TextBlock Name="TxbRequestCreated"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Top"/>
+                </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Name="GBIssuedBy"
+                          Header="Рассмотрена:"
+                          Grid.Row="0" Grid.Column="1"
+                          FontSize="20"
+                          Margin="5">
+                        <TextBlock Name="TxbIssuedBy"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Top"/>
+                    </GroupBox>
+                </Grid>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                          Header="Обращение:"
+                          Grid.Row="0" Grid.Column="0"
+                          FontSize="20"
+                          Margin="5">
+                    <TextBlock Name="TxbRequest"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Top"/>
+                </GroupBox>
+            </Grid>
+            <Button Name="BtnIssue"
+                        Click="BtnIssue_Click"
+                        Content="Рассмотреть"
+                        Foreground="#0850A4"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Margin="0, 15, 0, 0"
+                        Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
+        </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
+
+

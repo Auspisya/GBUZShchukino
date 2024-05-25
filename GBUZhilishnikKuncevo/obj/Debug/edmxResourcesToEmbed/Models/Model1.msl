@@ -75,6 +75,8 @@
     <EntitySetMapping Name="Counter">
       <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Counter">
         <MappingFragment StoreEntitySet="Counter">
+          <ScalarProperty Name="endOfOperation" ColumnName="endOfOperation" />
+          <ScalarProperty Name="startOfOperation" ColumnName="startOfOperation" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="typeOfCounterId" ColumnName="typeOfCounterId" />
           <ScalarProperty Name="apartmentId" ColumnName="apartmentId" />
@@ -264,6 +266,16 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="statusName" ColumnName="statusName" />
           <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientRequest">
+      <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.ClientRequest">
+        <MappingFragment StoreEntitySet="ClientRequest">
+          <ScalarProperty Name="requestCreated" ColumnName="requestCreated" />
+          <ScalarProperty Name="issuedById" ColumnName="issuedById" />
+          <ScalarProperty Name="request" ColumnName="request" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

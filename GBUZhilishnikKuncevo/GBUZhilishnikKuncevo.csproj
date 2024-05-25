@@ -61,9 +61,13 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QRCoder, Version=1.5.1.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.5.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -162,6 +166,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClientRequests\ClientRequestIssuePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientRequests\ClientRequestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CounterAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,6 +254,7 @@
     <Compile Include="Models\Address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressStoredFunctions.cs" />
     <Compile Include="Models\Apartment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -252,6 +265,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Client.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Counter.cs">
@@ -287,6 +303,7 @@
     <Compile Include="Models\PersonalInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PersonalInfoStoredFunctions.cs" />
     <Compile Include="Models\Proprietary.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -371,6 +388,12 @@
     </Compile>
     <Compile Include="Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientRequests\ClientRequestIssuePage.xaml.cs">
+      <DependentUpon>ClientRequestIssuePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientRequests\ClientRequestsPage.xaml.cs">
+      <DependentUpon>ClientRequestsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CounterAddPage.xaml.cs">
       <DependentUpon>CounterAddPage.xaml</DependentUpon>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Projects\GZKPractice\GBUZhilishnikKuncevo\App.xaml
-34-753577976
+36-1086762216
 2-1223955081
-711721902006
-25-975902729
-MainWindow.xaml;Pages\AccountingAddPage.xaml;Pages\AccountingEditPage.xaml;Pages\AccountingPage.xaml;Pages\AdminPages\AdminProfilePage.xaml;Pages\AuthPages\AuthorizationPage.xaml;Pages\AuthPages\PasswordChangePage.xaml;Pages\BankBookAddPage.xaml;Pages\BankBookEditPage.xaml;Pages\BankBookInfoPage.xaml;Pages\BankBookPage.xaml;Pages\BankBookReportPage.xaml;Pages\ClientAddPage.xaml;Pages\ClientEditPage.xaml;Pages\ClientInfoPage.xaml;Pages\ClientPage.xaml;Pages\CounterAddPage.xaml;Pages\CounterEditPage.xaml;Pages\CounterHistoryPage.xaml;Pages\CounterInfoPage.xaml;Pages\CounterPage.xaml;Pages\DebtorsPage.xaml;Pages\MenuPages\MenuAuthPage.xaml;Pages\MenuPages\MenuPage.xaml;Pages\SuperAdminPages\SessionPage.xaml;Pages\SuperAdminPages\SuperAdminProfilePage.xaml;Pages\SuperAdminPages\UserAddPage.xaml;Pages\SuperAdminPages\UserEditPage.xaml;Pages\SuperAdminPages\UserInfoPage.xaml;Pages\SuperAdminPages\UserPage.xaml;Pages\TotalCheckAddPage.xaml;Pages\ServiceCheckPage.xaml;Pages\TotalCheckPage.xaml;Pages\WelcomePage.xaml;
+76-85952126
+27-381834113
+MainWindow.xaml;Pages\AccountingAddPage.xaml;Pages\AccountingEditPage.xaml;Pages\AccountingPage.xaml;Pages\AdminPages\AdminProfilePage.xaml;Pages\AuthPages\AuthorizationPage.xaml;Pages\AuthPages\PasswordChangePage.xaml;Pages\BankBookAddPage.xaml;Pages\BankBookEditPage.xaml;Pages\BankBookInfoPage.xaml;Pages\BankBookPage.xaml;Pages\BankBookReportPage.xaml;Pages\ClientAddPage.xaml;Pages\ClientEditPage.xaml;Pages\ClientInfoPage.xaml;Pages\ClientPage.xaml;Pages\ClientRequests\ClientRequestIssuePage.xaml;Pages\ClientRequests\ClientRequestsPage.xaml;Pages\CounterAddPage.xaml;Pages\CounterEditPage.xaml;Pages\CounterHistoryPage.xaml;Pages\CounterInfoPage.xaml;Pages\CounterPage.xaml;Pages\DebtorsPage.xaml;Pages\MenuPages\MenuAuthPage.xaml;Pages\MenuPages\MenuPage.xaml;Pages\SuperAdminPages\SessionPage.xaml;Pages\SuperAdminPages\SuperAdminProfilePage.xaml;Pages\SuperAdminPages\UserAddPage.xaml;Pages\SuperAdminPages\UserEditPage.xaml;Pages\SuperAdminPages\UserInfoPage.xaml;Pages\SuperAdminPages\UserPage.xaml;Pages\TotalCheckAddPage.xaml;Pages\ServiceCheckPage.xaml;Pages\TotalCheckPage.xaml;Pages\WelcomePage.xaml;
 
-False
+True
 

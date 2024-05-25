@@ -25,7 +25,7 @@ namespace GBUZhilishnikKuncevo.Models
         public int addressId { get; set; }
         public int numberOfResidents { get; set; }
         public double apartmentArea { get; set; }
-
+    
         public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BankBook> BankBook { get; set; }

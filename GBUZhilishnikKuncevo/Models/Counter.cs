@@ -24,6 +24,8 @@ namespace GBUZhilishnikKuncevo.Models
         public int typeOfCounterId { get; set; }
         public int apartmentId { get; set; }
         public string counterNumber { get; set; }
+        public System.DateTime startOfOperation { get; set; }
+        public System.DateTime endOfOperation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Accounting> Accounting { get; set; }

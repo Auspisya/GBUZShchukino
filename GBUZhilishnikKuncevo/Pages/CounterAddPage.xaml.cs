@@ -2,6 +2,7 @@
 using GBUZhilishnikKuncevo.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -53,10 +54,9 @@ namespace GBUZhilishnikKuncevo.Pages
         /// <param name="e"></param>
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbCounterNumber.Text == "" || CmbAddress.Text == "" || CmbCounterType.Text == "")
+            if (TxbCounterNumber.Text == "" || CmbAddress.Text == "" || CmbCounterType.Text == "" || DPDateOfOperationStart.Text == "" || DPDateOfOperationEnd.Text == "")
             {
-                MessageBox.Show("Нужно заполнить все поля!",
-                    "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Нужно заполнить все поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -68,26 +68,30 @@ namespace GBUZhilishnikKuncevo.Pages
                 {
                     try
                     {
-                        Counter counter = new Counter()
+                        if (DPDateOfOperationEnd.DisplayDate < DPDateOfOperationStart.DisplayDate)
                         {
-                            counterNumber = TxbCounterNumber.Text,
-                            apartmentId = (CmbAddress.SelectedItem as Apartment).id,
-                            TypeOfCounter = CmbCounterType.SelectedItem as TypeOfCounter
-                        };
- 
-                        DBConnection.DBConnect.Counter.Add(counter);
-                        DBConnection.DBConnect.SaveChanges();
-                        MessageBox.Show("Данные успешно добавлены!",
-                            "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Navigation.frameNav.GoBack();
+                            MessageBox.Show("Начало эксплуатаций должно быть раньше чем конец", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        else
+                        {
+                            Counter counter = new Counter()
+                            {
+                                counterNumber = TxbCounterNumber.Text,
+                                apartmentId = (CmbAddress.SelectedItem as Apartment).id,
+                                TypeOfCounter = CmbCounterType.SelectedItem as TypeOfCounter,
+                                startOfOperation = DPDateOfOperationStart.DisplayDate,
+                                endOfOperation = DPDateOfOperationEnd.DisplayDate,
+                            };
 
+                            DBConnection.DBConnect.Counter.Add(counter);
+                            DBConnection.DBConnect.SaveChanges();
+                            MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Navigation.frameNav.GoBack();
+                        }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message.ToString(),
-                            "Критическая ошибка",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Warning);
+                        MessageBox.Show(ex.Message.ToString(), "Критическая ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
             }
@@ -105,5 +109,70 @@ namespace GBUZhilishnikKuncevo.Pages
                 e.Handled = true;
             }
         }
+
+        private void DP_PreviewTextInput_End(object sender, TextCompositionEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            if (dp != null)
+            {
+                // Получаем текст, который будет добавлен к текущему содержимому DatePicker
+                string newText = dp.Text + e.Text;
+
+                DateTime selectedDate;
+                var formats = new[] { "MM/dd/yyyy", "ddd MMM d, yyyy", "M-d-yy", "MMM.d.yyyy", "MM.dd.yyyy", "M.d.yyyy", "d.M.yyyy", "dd/MM/yyyy", "d-M-yy", "d.MMM.yyyy", "dd.MM.yyyy",
+                "d/M/yyyy", "d/MMM/yyyy", "d/M/yy"};
+                if (DateTime.TryParseExact(newText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out selectedDate))
+                {
+                    // Получаем максимально допустимую дату из свойства DisplayDateEnd
+
+                    // Проверяем, не превышает ли выбранная дата максимально допустимую
+                    if (selectedDate > dp.DisplayDateEnd.Value)
+                    {
+                        // Отменяем ввод, если дата превышает максимально допустимую
+                        dp.DisplayDate = dp.DisplayDateEnd.Value;
+                        dp.Text = dp.DisplayDate.ToString();
+                        e.Handled = false;
+                    }
+                }
+                else
+                {
+                    // Отменяем ввод, если введенный текст не является датой
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void DP_PreviewTextInput_Start(object sender, TextCompositionEventArgs e)
+        {
+            var dp = (DatePicker)sender;
+            if (dp != null)
+            {
+                // Получаем текст, который будет добавлен к текущему содержимому DatePicker
+                string newText = dp.Text + e.Text;
+
+                DateTime selectedDate;
+                var formats = new[] { "MM/dd/yyyy", "ddd MMM d, yyyy", "M-d-yy", "MMM.d.yyyy", "MM.dd.yyyy", "M.d.yyyy", "d.M.yyyy", "dd/MM/yyyy", "d-M-yy", "d.MMM.yyyy", "dd.MM.yyyy",
+                "d/M/yyyy", "d/MMM/yyyy", "d/M/yy"};
+                if (DateTime.TryParseExact(newText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out selectedDate))
+                {
+                    // Получаем максимально допустимую дату из свойства DisplayDateEnd
+
+                    // Проверяем, не превышает ли выбранная дата максимально допустимую
+                    if (selectedDate < dp.DisplayDateStart.Value)
+                    {
+                        // Отменяем ввод, если дата превышает максимально допустимую
+                        dp.DisplayDate = dp.DisplayDateStart.Value;
+                        dp.Text = dp.DisplayDate.ToString();
+                        e.Handled = false;
+                    }
+                }
+                else
+                {
+                    // Отменяем ввод, если введенный текст не является датой
+                    e.Handled = false;
+                }
+            }
+        }
+
     }
 }

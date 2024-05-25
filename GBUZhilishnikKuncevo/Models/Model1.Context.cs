@@ -50,5 +50,6 @@ namespace GBUZhilishnikKuncevo.Models
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<UserStatus> UserStatus { get; set; }
+        public virtual DbSet<ClientRequest> ClientRequest { get; set; }
     }
 }

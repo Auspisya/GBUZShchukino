@@ -77,6 +77,16 @@
                           Height="20"
                           ToolTip="Показать"
                           Click="CBShowPassportInfo_Click"/>
+                <Button Name="BtnClientRequests"
+                        Click="BtnClientRequests_Click"
+                        Content="Обращения и жалобы"
+                        Foreground="#FF0850A4"
+                        Background="#FFD6DAED"
+                        FontSize="16"
+                        Margin="5"
+                        ToolTip="Перейти на страницу с жалоб и предложений"
+                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                
                 <StackPanel Margin="5"
                             Visibility = "Hidden"
                             Name="SPPassportInfo"

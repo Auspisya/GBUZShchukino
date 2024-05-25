@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a9441dd88e6e4dfa8a375307f536df4a" Name="Diagram1" ZoomLevel="52">
+      <Diagram DiagramId="a9441dd88e6e4dfa8a375307f536df4a" Name="Diagram1" ZoomLevel="84">
         <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Accounting" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Address" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.Apartment" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
@@ -54,6 +54,8 @@
         <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_Session_User" ManuallyRouted="false" />
         <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_User_UserStatus" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="menshakova_publicUtilitiesModel.ClientRequest" Width="1.5" PointX="10.5" PointY="12" />
+        <AssociationConnector Association="menshakova_publicUtilitiesModel.FK_ClientRequest_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,6 +1,7 @@
 ﻿using GBUZhilishnikKuncevo.Classes;
 using GBUZhilishnikKuncevo.Models;
 using GBUZhilishnikKuncevo.Pages.AuthPages;
+using GBUZhilishnikKuncevo.Pages.ClientRequests;
 using GBUZhilishnikKuncevo.Pages.MenuPages;
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 ImageId.Height = 0;
                 ImageId.Width = 0;
                 BtnShowUsers.Visibility = Visibility.Hidden;
+                BtnClientRequests.Visibility = Visibility.Collapsed;
                 CBShowPassportInfo.ToolTip = "Скрыть";
             }
             else
@@ -109,6 +111,7 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
                 ImageId.Height = 250;
                 ImageId.Width = 250;
                 BtnShowUsers.Visibility = Visibility.Visible;
+                BtnClientRequests.Visibility = Visibility.Visible;
                 CBShowPassportInfo.ToolTip = "Показать";
             }
         }
@@ -120,6 +123,11 @@ namespace GBUZhilishnikKuncevo.Pages.SuperAdminPages
         private void BtnShowUsers_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.Navigate(new UserPage());
+        }
+
+        private void BtnClientRequests_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.frameNav.Navigate(new ClientRequestsPage());
         }
     }
 }

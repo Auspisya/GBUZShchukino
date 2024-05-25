@@ -1,5 +1,6 @@
 ﻿<Page x:Class="GBUZhilishnikKuncevo.Pages.CounterAddPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -26,7 +27,6 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="85"/>
-                    <RowDefinition Height="85"/>
                 </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Номер счётчика:"
@@ -51,9 +51,17 @@
                               IsTextSearchEnabled="True"
                               IsEditable="True"/>
                 </GroupBox>
+            </Grid>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Header="Тип счётчика:"
-                          Grid.Row ="1" Grid.Column="0"
+                          Grid.Row ="0" Grid.Column="0"
                           HorizontalAlignment="Stretch"
                           FontSize="20"
                           Margin="5">
@@ -61,6 +69,37 @@
                               HorizontalAlignment="Stretch"
                               IsTextSearchEnabled="True"
                               IsEditable="True"/>
+                </GroupBox>
+            </Grid>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="0"
+                              Header="Дата последней поверки:"
+                              FontSize="20"
+                              Margin="5">
+                    <DatePicker Name="DPDateOfOperationStart"
+                                    HorizontalAlignment="Stretch"
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput_End"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
+                              Grid.Row ="0" Grid.Column="1"
+                              Header="Дата очередной поверки:"
+                              FontSize="20"
+                              Margin="5">
+                    <DatePicker Name="DPDateOfOperationEnd"
+                                    HorizontalAlignment="Stretch"
+                                    BorderBrush="#FF0850A4"
+                                    DisplayDateStart="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}"
+                                    PreviewTextInput="DP_PreviewTextInput_Start"/>
                 </GroupBox>
             </Grid>
             <Button Name="BtnAdd"

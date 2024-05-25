@@ -70,6 +70,15 @@
           <Property Name="snilsId" Type="int" Nullable="false" />
           <Property Name="personalInfo" Type="int" />
         </EntityType>
+        <EntityType Name="ClientRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="request" Type="nvarchar" MaxLength="4000" />
+          <Property Name="issuedById" Type="int" />
+          <Property Name="requestCreated" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Counter">
           <Key>
             <PropertyRef Name="id" />
@@ -78,6 +87,8 @@
           <Property Name="typeOfCounterId" Type="int" Nullable="false" />
           <Property Name="apartmentId" Type="int" Nullable="false" />
           <Property Name="counterNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="startOfOperation" Type="date" Nullable="false" />
+          <Property Name="endOfOperation" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -390,6 +401,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ClientRequest_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ClientRequest" Type="Self.ClientRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClientRequest">
+              <PropertyRef Name="issuedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Counter_Apartment">
           <End Role="Apartment" Type="Self.Apartment" Multiplicity="1" />
           <End Role="Counter" Type="Self.Counter" Multiplicity="*" />
@@ -541,6 +564,7 @@
           <EntitySet Name="BankBook" EntityType="Self.BankBook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Benefit" EntityType="Self.Benefit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientRequest" EntityType="Self.ClientRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Counter" EntityType="Self.Counter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ownership" EntityType="Self.Ownership" Schema="dbo" store:Type="Tables" />
@@ -607,6 +631,10 @@
           <AssociationSet Name="FK_Client_TIN" Association="Self.FK_Client_TIN">
             <End Role="TIN" EntitySet="TIN" />
             <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientRequest_User" Association="Self.FK_ClientRequest_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ClientRequest" EntitySet="ClientRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_Counter_Apartment" Association="Self.FK_Counter_Apartment">
             <End Role="Apartment" EntitySet="Apartment" />
@@ -756,6 +784,8 @@
           <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Counter" FromRole="Counter" ToRole="Accounting" />
           <NavigationProperty Name="Apartment" Relationship="Self.FK_Counter_Apartment" FromRole="Counter" ToRole="Apartment" />
           <NavigationProperty Name="TypeOfCounter" Relationship="Self.FK_Counter_TypeOfCounter" FromRole="Counter" ToRole="TypeOfCounter" />
+          <Property Name="startOfOperation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="endOfOperation" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -931,6 +961,7 @@
           <NavigationProperty Name="Session" Relationship="Self.FK_Session_User" FromRole="User" ToRole="Session" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK_User_Role" FromRole="User" ToRole="UserRole" />
           <NavigationProperty Name="UserStatus" Relationship="Self.FK_User_UserStatus" FromRole="User" ToRole="UserStatus" />
+          <NavigationProperty Name="ClientRequest" Relationship="menshakova_publicUtilitiesModel.FK_ClientRequest_User" FromRole="User" ToRole="ClientRequest" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -1360,7 +1391,34 @@
             <End Role="UserStatus" EntitySet="UserStatus" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <EntitySet Name="ClientRequest" EntityType="menshakova_publicUtilitiesModel.ClientRequest" />
+          <AssociationSet Name="FK_ClientRequest_User" Association="menshakova_publicUtilitiesModel.FK_ClientRequest_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ClientRequest" EntitySet="ClientRequest" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ClientRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="request" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="issuedById" Type="Int32" />
+          <Property Name="requestCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="menshakova_publicUtilitiesModel.FK_ClientRequest_User" FromRole="ClientRequest" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_ClientRequest_User">
+          <End Type="menshakova_publicUtilitiesModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="menshakova_publicUtilitiesModel.ClientRequest" Role="ClientRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClientRequest">
+              <PropertyRef Name="issuedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1441,6 +1499,8 @@
           <EntitySetMapping Name="Counter">
             <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.Counter">
               <MappingFragment StoreEntitySet="Counter">
+                <ScalarProperty Name="endOfOperation" ColumnName="endOfOperation" />
+                <ScalarProperty Name="startOfOperation" ColumnName="startOfOperation" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeOfCounterId" ColumnName="typeOfCounterId" />
                 <ScalarProperty Name="apartmentId" ColumnName="apartmentId" />
@@ -1630,6 +1690,16 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="statusName" ColumnName="statusName" />
                 <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientRequest">
+            <EntityTypeMapping TypeName="menshakova_publicUtilitiesModel.ClientRequest">
+              <MappingFragment StoreEntitySet="ClientRequest">
+                <ScalarProperty Name="requestCreated" ColumnName="requestCreated" />
+                <ScalarProperty Name="issuedById" ColumnName="issuedById" />
+                <ScalarProperty Name="request" ColumnName="request" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

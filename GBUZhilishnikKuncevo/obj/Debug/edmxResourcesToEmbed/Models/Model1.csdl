@@ -95,6 +95,8 @@
     <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Counter" FromRole="Counter" ToRole="Accounting" />
     <NavigationProperty Name="Apartment" Relationship="Self.FK_Counter_Apartment" FromRole="Counter" ToRole="Apartment" />
     <NavigationProperty Name="TypeOfCounter" Relationship="Self.FK_Counter_TypeOfCounter" FromRole="Counter" ToRole="TypeOfCounter" />
+    <Property Name="startOfOperation" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="endOfOperation" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>
@@ -270,6 +272,7 @@
     <NavigationProperty Name="Session" Relationship="Self.FK_Session_User" FromRole="User" ToRole="Session" />
     <NavigationProperty Name="UserRole" Relationship="Self.FK_User_Role" FromRole="User" ToRole="UserRole" />
     <NavigationProperty Name="UserStatus" Relationship="Self.FK_User_UserStatus" FromRole="User" ToRole="UserStatus" />
+    <NavigationProperty Name="ClientRequest" Relationship="menshakova_publicUtilitiesModel.FK_ClientRequest_User" FromRole="User" ToRole="ClientRequest" />
   </EntityType>
   <EntityType Name="UserRole">
     <Key>
@@ -699,5 +702,32 @@
       <End Role="UserStatus" EntitySet="UserStatus" />
       <End Role="User" EntitySet="User" />
     </AssociationSet>
+    <EntitySet Name="ClientRequest" EntityType="menshakova_publicUtilitiesModel.ClientRequest" />
+    <AssociationSet Name="FK_ClientRequest_User" Association="menshakova_publicUtilitiesModel.FK_ClientRequest_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ClientRequest" EntitySet="ClientRequest" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ClientRequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="request" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="issuedById" Type="Int32" />
+    <Property Name="requestCreated" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="User" Relationship="menshakova_publicUtilitiesModel.FK_ClientRequest_User" FromRole="ClientRequest" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_ClientRequest_User">
+    <End Type="menshakova_publicUtilitiesModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="menshakova_publicUtilitiesModel.ClientRequest" Role="ClientRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ClientRequest">
+        <PropertyRef Name="issuedById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

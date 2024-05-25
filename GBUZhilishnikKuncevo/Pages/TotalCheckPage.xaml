@@ -79,6 +79,19 @@
                 <DataGridTextColumn Header="Статус"
                                     Binding="{Binding PaymentState.paymentStateName}"
                                     Width="200"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Name="BtnPrint"
+                                    Click="BtnPrint_Click"
+                                    Content="Печать"
+                                    Foreground="#0850A4"
+                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

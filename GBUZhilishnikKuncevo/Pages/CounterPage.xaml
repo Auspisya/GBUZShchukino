@@ -45,6 +45,7 @@
         <DataGrid Name ="DataCounter"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
+                  LoadingRow="DataCounter_LoadingRow"
                   Margin="0, 40, 0, 0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID"
@@ -55,6 +56,12 @@
                                         Width="*"/>
                 <DataGridTextColumn Header="Тип"
                                         Binding="{Binding TypeOfCounter.counterName}"
+                                        Width="*"/>
+                <DataGridTextColumn Header="Дата последней поверки"
+                                        Binding="{Binding startOfOperation, StringFormat=\{0:dd.MM.yy\}}"
+                                        Width="*"/>
+                <DataGridTextColumn Header="Дата очередной поверки"
+                                        Binding="{Binding endOfOperation, StringFormat=\{0:dd.MM.yy\}}"
                                         Width="*"/>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
