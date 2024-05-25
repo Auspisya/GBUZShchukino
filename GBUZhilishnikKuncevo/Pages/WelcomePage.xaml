@@ -42,7 +42,7 @@
                    FontSize="35"
                    Margin="0, 50, 0, 0"
                    Style="{StaticResource MaterialDesignHeadline1TextBlock}"
-                   Foreground="#FF005197"/>
+                   Foreground="#DFB100"/>
         </Grid>
     </Grid>
 </Page>

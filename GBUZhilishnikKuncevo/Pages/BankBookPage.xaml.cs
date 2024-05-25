@@ -137,6 +137,11 @@ namespace GBUZhilishnikKuncevo.Pages
             }
         }
 
+        /// <summary>
+        /// Переход на страницу отчёта по лицевому счёту
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.Navigate(new BankBookReportPage((sender as Button).DataContext as BankBook));

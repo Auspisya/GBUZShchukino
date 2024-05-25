@@ -214,7 +214,11 @@ namespace GBUZhilishnikKuncevo.Pages
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// Показать/скрыть поля для заполнения паспортных данных иностранного гражданина
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CBShowForeignPassport_Click(object sender, RoutedEventArgs e)
         {
             if (CBShowForeignPassport.IsChecked.Value)
@@ -231,6 +235,11 @@ namespace GBUZhilishnikKuncevo.Pages
             }
             
         }
+        /// <summary>
+        /// Показать/скрыть поля для заполнения паспортных данных РФ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CBShowPassport_Click(object sender, RoutedEventArgs e)
         {
             if (CBShowPassport.IsChecked.Value)
@@ -246,13 +255,24 @@ namespace GBUZhilishnikKuncevo.Pages
                 CBShowForeignPassport.IsChecked = true;
             }
         }
-
+        /// <summary>
+        /// Обработчик события изменения выбранной даты в элементе управления DatePicker.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var dp = (DatePicker)sender;
+            // Устанавливаем отображаемую дату в DatePicker равной минимальной из выбранной даты и максимальной даты.
+            // Это предотвращает отображение даты, превышающей максимальную дату, установленную для DatePicker.
             dp.DisplayDate = (dp.DisplayDate > dp.DisplayDateEnd.Value ? dp.DisplayDateEnd.Value : dp.DisplayDate);
         }
 
+        /// <summary>
+        /// Ограничитель выбора даты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DP_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var dp = (DatePicker)sender;

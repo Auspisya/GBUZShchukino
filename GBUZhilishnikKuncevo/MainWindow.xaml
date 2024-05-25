@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GBUZhilishnikKuncevo"
         mc:Ignorable="d"
-        Title="ГБУ Жилищник Района Щукино" MinHeight="600" MinWidth="1200"
+        Title="ГБУ Жилищник района Щукино" MinHeight="600" MinWidth="1200"
         Icon="./Icons/flag.png"
         WindowStartupLocation="CenterScreen"
         Closing="Window_Closing" ResizeMode="CanResizeWithGrip">

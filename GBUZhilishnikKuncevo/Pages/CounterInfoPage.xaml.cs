@@ -43,7 +43,7 @@ namespace GBUZhilishnikKuncevo.Pages
         }
 
         /// <summary>
-        /// Возвращаемся назад
+        /// Переадресация на предыдущую страницу
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
