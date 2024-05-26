@@ -58,10 +58,10 @@
                                         Binding="{Binding TypeOfCounter.counterName}"
                                         Width="*"/>
                 <DataGridTextColumn Header="Дата последней поверки"
-                                        Binding="{Binding startOfOperation, StringFormat=\{0:dd.MM.yy\}}"
+                                        Binding="{Binding startOfOperation, StringFormat=\{0:dd.MM.yyyy\}}"
                                         Width="*"/>
                 <DataGridTextColumn Header="Дата очередной поверки"
-                                        Binding="{Binding endOfOperation, StringFormat=\{0:dd.MM.yy\}}"
+                                        Binding="{Binding endOfOperation, StringFormat=\{0:dd.MM.yyyy\}}"
                                         Width="*"/>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>

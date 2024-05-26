@@ -17,8 +17,8 @@ namespace GBUZhilishnikKuncevo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Session = new HashSet<Session>();
             this.ClientRequest = new HashSet<ClientRequest>();
+            this.Session = new HashSet<Session>();
         }
     
         public int id { get; set; }
@@ -30,12 +30,12 @@ namespace GBUZhilishnikKuncevo.Models
         public int personalInfoId { get; set; }
         public System.DateTime passwordLastChanged { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientRequest> ClientRequest { get; set; }
         public virtual PersonalInfo PersonalInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Session> Session { get; set; }
         public virtual UserRole UserRole { get; set; }
         public virtual UserStatus UserStatus { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientRequest> ClientRequest { get; set; }
     }
 }

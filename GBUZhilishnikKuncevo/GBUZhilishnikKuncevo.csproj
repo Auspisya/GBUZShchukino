@@ -499,6 +499,13 @@
     <Resource Include="Pages\Resources\gerb.png" />
     <Resource Include="Icons\flag.png" />
     <Resource Include="Icons\gerb.png" />
+    <Resource Include="Pages\SuperAdminPages\Resources\user.png" />
+    <Resource Include="Pages\SuperAdminPages\Resources\id.gif" />
+    <Resource Include="Pages\MenuPages\Resources\password.gif" />
+    <Resource Include="Pages\AdminPages\Resources\id.gif" />
+    <Resource Include="Pages\AdminPages\Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -509,13 +516,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Pages\SuperAdminPages\Resources\user.png" />
-    <Resource Include="Pages\SuperAdminPages\Resources\id.gif" />
-    <Resource Include="Pages\MenuPages\Resources\password.gif" />
-    <Resource Include="Pages\AdminPages\Resources\id.gif" />
-    <Resource Include="Pages\AdminPages\Resources\user.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -93,7 +93,7 @@
                         Background="#FFD6DAED"
                         FontSize="16"
                         Margin="5"
-                        ToolTip="Перейти на страницу с жалоб и предложений"
+                        ToolTip="Перейти на страницу с жалобами и предложениями"
                         Style="{StaticResource MaterialDesignFlatButton}"/>
                 <StackPanel Margin="5, -40, 5, 5"
                             Visibility = "Hidden"

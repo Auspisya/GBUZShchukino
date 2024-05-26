@@ -40,10 +40,10 @@
                 </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Name="GBIssuedBy"
-                          Header="Рассмотрена:"
-                          Grid.Row="0" Grid.Column="1"
-                          FontSize="20"
-                          Margin="5">
+                              Header="Рассмотрена:"
+                              Grid.Row="0" Grid.Column="1"
+                              FontSize="20"
+                              Margin="5">
                         <TextBlock Name="TxbIssuedBy"
                              HorizontalAlignment="Stretch"
                              VerticalAlignment="Top"/>
@@ -61,20 +61,21 @@
                           Grid.Row="0" Grid.Column="0"
                           FontSize="20"
                           Margin="5">
-                    <TextBlock Name="TxbRequest"
-                             HorizontalAlignment="Stretch"
-                             VerticalAlignment="Top"/>
-                </GroupBox>
+                        <TextBlock Name="TxbRequest"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Top"
+                                   TextWrapping="WrapWithOverflow"/>  
+                    </GroupBox>
             </Grid>
             <Button Name="BtnIssue"
-                        Click="BtnIssue_Click"
-                        Content="Рассмотреть"
-                        Foreground="#0850A4"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Center"
-                        FontSize="20"
-                        Margin="0, 15, 0, 0"
-                        Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
+                    Click="BtnIssue_Click"
+                    Content="Рассмотреть"
+                    Foreground="#0850A4"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    FontSize="20"
+                    Margin="0, 15, 0, 0"
+                    Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
         </StackPanel>
         </ScrollViewer>
     </Grid>

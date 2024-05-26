@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Projects\GZKPractice\GBUZhilishnikKuncevo\obj\Debug\
+C:\Users\mensh\source\repos\GBUZSchukino\GBUZShchukino\GBUZhilishnikKuncevo\obj\Debug\
 GBUZhilishnikKuncevo
 none
 false
 DEBUG;TRACE
-D:\Projects\GZKPractice\GBUZhilishnikKuncevo\App.xaml
+C:\Users\mensh\source\repos\GBUZSchukino\GBUZShchukino\GBUZhilishnikKuncevo\App.xaml
 36-1086762216
 2-1223955081
 751996136492
-27-381834113
+272059437653
 MainWindow.xaml;Pages\AccountingAddPage.xaml;Pages\AccountingEditPage.xaml;Pages\AccountingPage.xaml;Pages\AdminPages\AdminProfilePage.xaml;Pages\AuthPages\AuthorizationPage.xaml;Pages\AuthPages\PasswordChangePage.xaml;Pages\BankBookAddPage.xaml;Pages\BankBookEditPage.xaml;Pages\BankBookInfoPage.xaml;Pages\BankBookPage.xaml;Pages\BankBookReportPage.xaml;Pages\ClientAddPage.xaml;Pages\ClientEditPage.xaml;Pages\ClientInfoPage.xaml;Pages\ClientPage.xaml;Pages\ClientRequests\ClientRequestIssuePage.xaml;Pages\ClientRequests\ClientRequestsPage.xaml;Pages\CounterAddPage.xaml;Pages\CounterEditPage.xaml;Pages\CounterHistoryPage.xaml;Pages\CounterInfoPage.xaml;Pages\CounterPage.xaml;Pages\DebtorsPage.xaml;Pages\MenuPages\MenuAuthPage.xaml;Pages\MenuPages\MenuPage.xaml;Pages\SuperAdminPages\SessionPage.xaml;Pages\SuperAdminPages\SuperAdminProfilePage.xaml;Pages\SuperAdminPages\UserAddPage.xaml;Pages\SuperAdminPages\UserEditPage.xaml;Pages\SuperAdminPages\UserInfoPage.xaml;Pages\SuperAdminPages\UserPage.xaml;Pages\TotalCheckAddPage.xaml;Pages\ServiceCheckPage.xaml;Pages\TotalCheckPage.xaml;Pages\WelcomePage.xaml;
 
 False

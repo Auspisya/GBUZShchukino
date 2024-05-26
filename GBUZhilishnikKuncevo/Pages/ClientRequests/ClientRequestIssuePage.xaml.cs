@@ -27,7 +27,7 @@ namespace GBUZhilishnikKuncevo.Pages.ClientRequests
         {
             InitializeComponent();
             clientRequestId = request.id;
-            TxbRequestCreated.Text = request.requestCreated.ToString("d.M.yyyy");
+            TxbRequestCreated.Text = request.requestCreated.ToString("dd.MM.yyyy");
             TxbRequest.Text = request.request;
             if (request.issuedById == null)
             {

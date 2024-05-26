@@ -71,10 +71,10 @@
                                     Binding="{Binding Benefit.benefitName}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Пеня"
-                                    Binding="{Binding fine}"
-                                    Width="*"/>
+                                    Binding="{Binding fine, StringFormat={}{0:F}}"
+                                    Width="70"/>
                 <DataGridTextColumn Header="К оплате, ₽"
-                                    Binding="{Binding totalPayble}"
+                                    Binding="{Binding totalPayble, StringFormat={}{0:F}}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Статус"
                                     Binding="{Binding PaymentState.paymentStateName}"

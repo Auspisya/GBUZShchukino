@@ -63,7 +63,7 @@
                                     Binding="{Binding Accounting.accountingEnd, StringFormat=dd/MM/yyyy}"
                                     Width="*"/>
                 <DataGridTextColumn Header="К оплате, ₽"
-                                    Binding="{Binding totalPayble}"
+                                    Binding="{Binding totalPayble, StringFormat={}{0:F}}"
                                     Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

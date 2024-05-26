@@ -31,6 +31,7 @@ namespace GBUZhilishnikKuncevo.Models
         public virtual DbSet<BankBook> BankBook { get; set; }
         public virtual DbSet<Benefit> Benefit { get; set; }
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<ClientRequest> ClientRequest { get; set; }
         public virtual DbSet<Counter> Counter { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Ownership> Ownership { get; set; }
@@ -50,6 +51,5 @@ namespace GBUZhilishnikKuncevo.Models
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<UserStatus> UserStatus { get; set; }
-        public virtual DbSet<ClientRequest> ClientRequest { get; set; }
     }
 }

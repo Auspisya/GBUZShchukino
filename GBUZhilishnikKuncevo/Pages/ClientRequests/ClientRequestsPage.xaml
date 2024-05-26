@@ -45,8 +45,8 @@
                                         Binding="{Binding request}"
                                         Width="*"/>
                 <DataGridTextColumn Header="Дата создания обращения"
-                                        Binding="{Binding requestCreated, StringFormat=\{0:dd.MM.yy\}}"
-                                        Width="150"/>
+                                        Binding="{Binding requestCreated, StringFormat=\{0:dd.MM.yyyy\}}"
+                                        Width="200"/>
                 <DataGridTemplateColumn Width="150">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
