@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GBUZhilishnikKuncevo.Pages.SuperAdminPages"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="800"
       Title="Добавление пользователя">
@@ -89,15 +90,16 @@
                               Header="Номер телефона:"
                               FontSize="20"
                               Margin="5">
-                        <TextBox Name="TxbPhoneNumber"
-                                 ToolTip="Образец: +79000000000"
-                                 Style="{StaticResource MaterialDesignTextBox}"
-                                 HorizontalAlignment="Stretch"
-                                 CaretBrush="#FF0850A4"
-                                 SelectionBrush="#FF0850A4"
-                                 VerticalAlignment="Top"
-                                 PreviewTextInput="TxbNum_PreviewTextInput"
-                                 MaxLength="12"/>
+                        <xctk:MaskedTextBox Name="TxbPhoneNumber"
+                                            ToolTip="Образец: +79000000000"
+                                            Style="{StaticResource MaterialDesignTextBox}"
+                                            HorizontalAlignment="Stretch"
+                                            CaretBrush="#FF0850A4"
+                                            SelectionBrush="#FF0850A4"
+                                            VerticalAlignment="Top"
+                                            PreviewTextInput="TxbNum_PreviewTextInput"
+                                            MaxLength="12"
+                                            Mask="+00000000000"/>
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Grid.Row="0" Grid.Column="1"
@@ -211,15 +213,16 @@
                               Header="Код подразделения:"
                               FontSize="20"
                               Margin="5">
-                        <TextBox Name="TxbDivisionCode"
-                                 Style="{StaticResource MaterialDesignTextBox}"
-                                 HorizontalAlignment="Stretch"
-                                 CaretBrush="#FF0850A4"
-                                 ToolTip="Образец: 000-000"
-                                 SelectionBrush="#FF0850A4"
-                                 VerticalAlignment="Top"
-                                 PreviewTextInput="TxbNum_PreviewTextInput"
-                                 MaxLength="7"/>
+                        <xctk:MaskedTextBox Name="TxbDivisionCode"
+                                            Style="{StaticResource MaterialDesignTextBox}"
+                                            HorizontalAlignment="Stretch"
+                                            CaretBrush="#FF0850A4"
+                                            ToolTip="Образец: 000-000"
+                                            SelectionBrush="#FF0850A4"
+                                            VerticalAlignment="Top"
+                                            PreviewTextInput="TxbNum_PreviewTextInput"
+                                            Mask="000-000"
+                                            MaxLength="7"/>    
                     </GroupBox>
                     <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                               Grid.Row ="1" Grid.Column="2"

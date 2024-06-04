@@ -31,27 +31,28 @@
                 </Grid.RowDefinitions>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Grid.Row ="0" Grid.Column="0"
-                              Header="Услуга:"
-                              FontSize="20"
-                              Margin="5">
+                          Header="Услуга:"
+                          FontSize="20"
+                          Margin="5">
                     <ComboBox Name="CmbService"
-                                  HorizontalAlignment="Stretch"
-                                  SelectionChanged="CmbService_SelectionChanged"
-                                  IsTextSearchEnabled="True"
-                                  IsEditable="True"/>
+                              HorizontalAlignment="Stretch"
+                              SelectionChanged="CmbService_SelectionChanged"
+                              IsTextSearchEnabled="True"
+                              IsEditable="True"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Grid.Row ="0" Grid.Column="1"
-                              Header="Показание:"
-                              FontSize="20"
-                              Margin="5">
+                          Header="Показание:"
+                          FontSize="20"
+                          Margin="5">
                     <TextBox Name="TxbCounterReading"
-                                 Style="{StaticResource MaterialDesignTextBox}"
-                                 HorizontalAlignment="Stretch"
-                                 CaretBrush="#FF0850A4"
-                                 SelectionBrush="#FF0850A4"
-                                 VerticalAlignment="Top"
-                                 PreviewTextInput="TxbNum_PreviewTextInput"/>
+                             Style="{StaticResource MaterialDesignTextBox}"
+                             HorizontalAlignment="Stretch"
+                             CaretBrush="#FF0850A4"
+                             SelectionBrush="#FF0850A4"
+                             VerticalAlignment="Top"
+                             PreviewTextInput="TxbNum_PreviewTextInput"
+                             MaxLength="10"/>
                 </GroupBox>
                 <GroupBox Style="{StaticResource MaterialDesignHeaderedContentControl}"
                           Grid.Row ="0" Grid.Column="2"

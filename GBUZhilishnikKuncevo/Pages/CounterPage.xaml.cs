@@ -152,7 +152,7 @@ namespace GBUZhilishnikKuncevo.Pages
         private void DataCounter_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             var counter = e.Row.DataContext as Counter;
-            if(counter.endOfOperation <= counter.startOfOperation)
+            if(counter.endOfOperation <= DateTime.Now)
                 e.Row.Background = new SolidColorBrush(Colors.Orange);
             else
                 e.Row.Background = new SolidColorBrush(Colors.White);

@@ -46,8 +46,16 @@ namespace GBUZhilishnikKuncevo.Pages
                 date = item.accountingEnd
             });
             Labels = new List<string>();
-            YFormatter = value => value.ToString("C");
+
+            string unitStr = "";
+            if (counter.Accounting.Count() != 0)
+            {
+                unitStr = counter.Accounting.First().Service.unit;
+            }
             ChartValues<double> values = new ChartValues<double>();
+
+            YFormatter = value => value.ToString() + " " + unitStr;
+            
             // Заполняем коллекции значений и меток данными из результатов запроса.
             foreach ( var item in results)
             {

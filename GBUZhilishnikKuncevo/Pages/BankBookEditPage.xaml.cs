@@ -31,7 +31,8 @@ namespace GBUZhilishnikKuncevo.Pages
 
             #region Наполняем элементы управления данными из БД по выбранной записи
             //Наполняем поля выбора из БД
-            CmbClient.DisplayMemberPath = "fullName";
+            
+            CmbClient.DisplayMemberPath = " PersonalInfo1.fullName";
             CmbClient.SelectedValuePath = "id";
             CmbClient.ItemsSource = DBConnection.DBConnect.Client.ToList();
             CmbClient.Text = bankBook.Client.PersonalInfo1.fullName.ToString();
