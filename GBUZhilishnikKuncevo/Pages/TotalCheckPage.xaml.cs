@@ -203,10 +203,12 @@ namespace GBUZhilishnikKuncevo.Pages
                 var FIOTextBlock = CreateTextBlock($"ФИО: {totalCheck.BankBook.Client.PersonalInfo1.fullName}", dataGrid.FontStyle, dataGrid.FontFamily);
                 var BankbookTextBlock = CreateTextBlock($"Лицевой счёт: {totalCheck.BankBook.bankBookNumber}", dataGrid.FontStyle, dataGrid.FontFamily);
                 var AddressTextBlock = CreateTextBlock($"Адрес: {totalCheck.BankBook.Apartment.Address.fullAddress}", dataGrid.FontStyle, dataGrid.FontFamily);
+                var AuthorTextBlock = CreateTextBlock($"Документ создан: {DBConnection.DBConnect.User.Where(item => item.id == AuthPages.AuthorizationPage.userId).First().PersonalInfo.fullName}", dataGrid.FontStyle, dataGrid.FontFamily);
                 fd.Blocks.Add(title);
                 fd.Blocks.Add(FIOTextBlock);
                 fd.Blocks.Add(BankbookTextBlock);
                 fd.Blocks.Add(AddressTextBlock);
+                fd.Blocks.Add(AuthorTextBlock);
                 if (totalCheck.benefitId != null)
                 {
                     var BenefitTextBlock = CreateTextBlock($"Льгота: {totalCheck.Benefit.benefitName}", dataGrid.FontStyle, dataGrid.FontFamily);
